@@ -1,6 +1,6 @@
 module.exports = {
   siteMetadata: {
-    title: `Dennis Morello`,
+    title: `<dev />`,
     author: `Dennis Morello`,
     description: `A dev blog by Dennis Morello.`,
     siteUrl: `https://dennismorello.gitlab.io/dev-blog`,
@@ -58,13 +58,13 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `Gatsby Starter Blog`,
-        short_name: `GatsbyJS`,
-        start_url: `/`,
+        name: `Dev Blog`,
+        short_name: `Dev Blog`,
+        start_url: `/dev-blog`,
         background_color: `#ffffff`,
         theme_color: `#663399`,
         display: `minimal-ui`,
-        icon: `content/assets/gatsby-icon.png`
+        icon: `content/assets/dev-icon.png`
       }
     },
     `gatsby-plugin-offline`,

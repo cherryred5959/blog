@@ -5,23 +5,24 @@
  * See: https://www.gatsbyjs.org/docs/static-query/
  */
 
-import React from "react"
-import { StaticQuery, graphql } from "gatsby"
-import Image from "gatsby-image"
+import React from 'react';
+import { StaticQuery, graphql } from 'gatsby';
+import Image from 'gatsby-image';
 
-import { rhythm } from "../utils/typography"
+import { rhythm } from '../utils/typography';
 
 function Bio() {
   return (
     <StaticQuery
       query={bioQuery}
       render={data => {
-        const { author, social } = data.site.siteMetadata
+        const { author, social } = data.site.siteMetadata;
         return (
           <div
             style={{
-              display: `flex`,
-              marginBottom: rhythm(2.5),
+              display: 'flex',
+              alignItems: 'center',
+              marginBottom: rhythm(2.5)
             }}
           >
             <Image
@@ -31,25 +32,26 @@ function Bio() {
                 marginRight: rhythm(1 / 2),
                 marginBottom: 0,
                 minWidth: 50,
-                borderRadius: `100%`,
+                borderRadius: `100%`
               }}
               imgStyle={{
-                borderRadius: `50%`,
+                borderRadius: `50%`
               }}
             />
-            <p>
-              Written by <strong>{author}</strong> who lives and works in San
-              Francisco building useful things.
-              {` `}
-              <a href={`https://twitter.com/${social.twitter}`}>
-                You should follow him on Twitter
-              </a>
-            </p>
+            <div>
+              <p style={{ margin: 0 }}>
+                Yet another {'<dev />'} blog by{' '}
+                <a href={`https://twitter.com/${social.twitter}`}>{author}</a>.
+              </p>
+              <p style={{ margin: 0 }}>
+                I talk about web technologies and other stuff.
+              </p>
+            </div>
           </div>
-        )
+        );
       }}
     />
-  )
+  );
 }
 
 const bioQuery = graphql`
@@ -70,6 +72,6 @@ const bioQuery = graphql`
       }
     }
   }
-`
+`;
 
-export default Bio
+export default Bio;
