@@ -8,7 +8,7 @@ module.exports = {
       twitter: `dennismorello`
     }
   },
-  pathPrefix: `/dev-blog`,
+  pathPrefix: `/`,
   plugins: [
     {
       resolve: `gatsby-source-filesystem`,
@@ -60,7 +60,7 @@ module.exports = {
       options: {
         name: `Dev Blog`,
         short_name: `Dev Blog`,
-        start_url: `/dev-blog`,
+        start_url: `/`,
         background_color: `#ffffff`,
         theme_color: `#663399`,
         display: `minimal-ui`,
