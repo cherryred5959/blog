@@ -3,7 +3,7 @@ module.exports = {
     title: `<dev />`,
     author: `Dennis Morello`,
     description: `A dev blog by Dennis Morello.`,
-    siteUrl: `https://dennismorello.gitlab.io/dev-blog`,
+    siteUrl: `https://morello.dev`,
     social: {
       twitter: `dennismorello`
     }
