@@ -1,5 +1,5 @@
 ---
-title: Welcome myself to the world 🙋🏻‍♂️
+title: Welcome myself to the world
 date: '2019-02-28T22:40:32.169Z'
 description: You may be wondering who I am and what I do in my life. If it is your case, read this!
 ---
@@ -9,29 +9,14 @@ Consonantia, there live the blind texts. Separated they live in Bookmarksgrove
 right at the coast of the Semantics, a large language ocean. A small river named
 Duden flows by their place and supplies it with the necessary regelialia.
 
-```jsx
-import React, { Component } from 'react';
-
-class Counter extends Component {
-  state = {
-    count: 0
-  };
-
-  _incrementCount = () => {
-    this.setState(prevState => ({
-      count: prevState.count + 1
-    }));
-  };
-
-  render() {
-    return (
-      <div className="Counter">
-        <input type="number" value={this.state.count} />
-        <button onClick={this._incrementCount}>Add</button>
-      </div>
-    );
+```javascript
+var oldUnload = window.onbeforeunload;
+window.onbeforeunload = function() {
+  saveCoverage();
+  if (oldUnload) {
+    return oldUnload.apply(this, arguments);
   }
-}
+};
 ```
 
 ## On deer horse aboard tritely yikes and much

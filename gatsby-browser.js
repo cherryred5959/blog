@@ -3,5 +3,4 @@ import 'typeface-montserrat';
 import 'typeface-merriweather';
 
 // prism.js code highlight
-import 'prismjs/themes/prism-okaidia.css';
-import 'prismjs/plugins/line-numbers/prism-line-numbers.css';
+import 'prism-themes/themes/prism-a11y-dark.css';
