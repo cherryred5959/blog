@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'gatsby';
 
 import { rhythm, scale } from '../utils/typography';
+import gatsbyLogo from '../../content/assets/gatsby-logo.svg';
 
 class Layout extends React.Component {
   render() {
@@ -62,10 +63,41 @@ class Layout extends React.Component {
       >
         <header>{header}</header>
         <main>{children}</main>
-        <footer>
-          © {new Date().getFullYear()}, Built with
-          {` `}
-          <a href="https://www.gatsbyjs.org">Gatsby</a>
+        <footer
+          style={{
+            marginTop: rhythm(2.5),
+            paddingTop: rhythm(1),
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'space-between'
+          }}
+        >
+          <span>
+            Built with{' '}
+            <a
+              href="https://www.gatsbyjs.org"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{
+                boxShadow: 'none'
+              }}
+            >
+              <img
+                src={gatsbyLogo}
+                alt="Gatsby Logo"
+                style={{
+                  height: rhythm(3 / 4),
+                  margin: 0,
+                  verticalAlign: 'sub'
+                }}
+              />
+            </a>
+          </span>
+          <span>
+            <a href="/rss.xml" target="_blank" rel="noopener noreferrer">
+              RSS
+            </a>
+          </span>
         </footer>
       </div>
     );
