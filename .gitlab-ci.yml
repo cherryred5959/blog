@@ -8,6 +8,7 @@ cache:
 
 pages:
   script:
+    - echo $GA_TRACKING_ID
     - npm install
     - ./node_modules/.bin/gatsby build --prefix-paths
   artifacts:
