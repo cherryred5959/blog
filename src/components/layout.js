@@ -94,7 +94,12 @@ class Layout extends React.Component {
             </a>
           </span>
           <span>
-            <a href="/rss.xml" target="_blank" rel="noopener noreferrer">
+            <a
+              type="application/rss+xml"
+              href="/rss.xml"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               RSS
             </a>
           </span>
