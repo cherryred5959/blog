@@ -57,6 +57,7 @@ module.exports = {
       }
     },
     `gatsby-plugin-feed`,
+    `gatsby-plugin-sitemap`,
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
