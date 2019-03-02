@@ -41,7 +41,14 @@ function Bio() {
             <div>
               <p style={{ margin: 0 }}>
                 A {'<dev />'} blog by{' '}
-                <a href={`https://twitter.com/${social.twitter}`}>{author}</a>.
+                <a
+                  href={`https://twitter.com/${social.twitter}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  {author}
+                </a>
+                .
               </p>
               <p style={{ margin: 0 }}>
                 I talk about web technologies and other stuff.
