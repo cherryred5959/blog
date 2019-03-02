@@ -40,7 +40,7 @@ function Bio() {
             />
             <div>
               <p style={{ margin: 0 }}>
-                Yet another {'<dev />'} blog by{' '}
+                A {'<dev />'} blog by{' '}
                 <a href={`https://twitter.com/${social.twitter}`}>{author}</a>.
               </p>
               <p style={{ margin: 0 }}>
