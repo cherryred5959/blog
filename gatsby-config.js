@@ -64,8 +64,8 @@ module.exports = {
         name: `Dev Blog by Dennis Morello`,
         short_name: `Dev Blog`,
         start_url: `/`,
-        background_color: `#ffffff`,
-        theme_color: `#663399`,
+        background_color: `#f907fc`,
+        theme_color: `#ffffff`,
         display: `minimal-ui`,
         icon: `content/assets/dev-icon.png`
       }
