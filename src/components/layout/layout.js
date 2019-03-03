@@ -64,7 +64,11 @@ class Layout extends React.Component {
             </a>
           </span>
           <span className={styles.kofi}>
-            <a href="https://ko-fi.com/O4O2RDTK" target="_blank">
+            <a
+              href="https://ko-fi.com/O4O2RDTK"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <img
                 src="https://az743702.vo.msecnd.net/cdn/kofi5.png?v=0"
                 alt="Buy Me a Coffee at ko-fi.com"
