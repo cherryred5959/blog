@@ -24,10 +24,13 @@ class BlogIndex extends React.Component {
           return (
             <div key={node.fields.slug}>
               <h3
-                className="post-title"
                 style={{
                   marginBottom: rhythm(1 / 4),
-                  fontSize: rhythm(1)
+                  fontSize: rhythm(1),
+                  backgroundColor: `#e71d73`,
+                  fontFamily: `Montserrat, sans-serif`,
+                  padding: `0.3em`,
+                  width: `fit-content`
                 }}
               >
                 <Link style={{ boxShadow: `none` }} to={node.fields.slug}>
