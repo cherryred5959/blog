@@ -30,7 +30,8 @@ class BlogIndex extends React.Component {
                   backgroundColor: `#e71d73`,
                   fontFamily: `Montserrat, sans-serif`,
                   padding: `0.3em`,
-                  width: `fit-content`
+                  width: `fit-content`,
+                  width: `-moz-fit-content`,
                 }}
               >
                 <Link style={{ boxShadow: `none` }} to={node.fields.slug}>
