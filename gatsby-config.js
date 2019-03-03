@@ -41,6 +41,7 @@ module.exports = {
               wrapperStyle: `margin-bottom: 1.0725rem`
             }
           },
+          `gatsby-plugin-sass`,
           `gatsby-remark-prismjs`,
           `gatsby-remark-external-links`,
           `gatsby-remark-copy-linked-files`,

@@ -1,9 +1,10 @@
 import React from 'react';
 import { Link, graphql } from 'gatsby';
+import styles from '../styles/pages/index.module.scss';
 
-import Bio from '../components/bio';
-import Layout from '../components/layout';
-import SEO from '../components/seo';
+import Bio from '../components/bio/bio';
+import Layout from '../components/layout/layout';
+import SEO from '../components/seo/seo';
 import { rhythm } from '../utils/typography';
 
 class BlogIndex extends React.Component {
@@ -19,33 +20,30 @@ class BlogIndex extends React.Component {
           keywords={[`blog`, `gatsby`, `javascript`, `react`]}
         />
         <Bio />
-        {posts.map(({ node }) => {
-          const title = node.frontmatter.title || node.fields.slug;
-          return (
-            <div key={node.fields.slug}>
-              <h3
-                style={{
-                  marginBottom: rhythm(1 / 4),
-                  fontSize: rhythm(1),
-                  backgroundColor: `#e71d73`,
-                  fontFamily: `Montserrat, sans-serif`,
-                  padding: `0.3em`,
-                  display: `table`
-                }}
-              >
-                <Link style={{ boxShadow: `none` }} to={node.fields.slug}>
-                  {title}
-                </Link>
-              </h3>
-              <small>{node.frontmatter.date}</small>
-              <p
-                dangerouslySetInnerHTML={{
-                  __html: node.frontmatter.description || node.excerpt
-                }}
-              />
-            </div>
-          );
-        })}
+        <div className={styles.postsList}>
+          {posts.map(({ node }) => {
+            const title = node.frontmatter.title || node.fields.slug;
+            return (
+              <div key={node.fields.slug}>
+                <h3
+                  className={styles.postTitle}
+                  style={{
+                    marginBottom: rhythm(1 / 4),
+                    fontSize: rhythm(1)
+                  }}
+                >
+                  <Link to={node.fields.slug}>{title}</Link>
+                </h3>
+                <small>{node.frontmatter.date}</small>
+                <p
+                  dangerouslySetInnerHTML={{
+                    __html: node.frontmatter.description || node.excerpt
+                  }}
+                />
+              </div>
+            );
+          })}
+        </div>
       </Layout>
     );
   }

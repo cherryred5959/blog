@@ -8,8 +8,9 @@
 import React from 'react';
 import { StaticQuery, graphql } from 'gatsby';
 import Image from 'gatsby-image';
+import styles from './bio.module.scss';
 
-import { rhythm } from '../utils/typography';
+import { rhythm } from '../../utils/typography';
 
 function Bio() {
   return (
@@ -19,28 +20,24 @@ function Bio() {
         const { author, social } = data.site.siteMetadata;
         return (
           <div
+            className={styles.bio}
             style={{
-              display: 'flex',
-              alignItems: 'center',
               marginBottom: rhythm(2.5)
             }}
           >
             <Image
+              className={styles.authorImage}
               fixed={data.avatar.childImageSharp.fixed}
               alt={author}
               style={{
-                marginRight: rhythm(1 / 2),
-                marginBottom: 0,
-                minWidth: 50,
-                borderRadius: `100%`,
-                border: `0.2rem solid #e71d73`
+                marginRight: rhythm(1 / 2)
               }}
               imgStyle={{
                 borderRadius: `50%`
               }}
             />
             <div>
-              <p style={{ margin: 0 }}>
+              <p>
                 A {'<dev />'} blog by{' '}
                 <a
                   href={`https://twitter.com/${social.twitter}`}
@@ -51,9 +48,7 @@ function Bio() {
                 </a>
                 .
               </p>
-              <p style={{ margin: 0 }}>
-                I talk about web technologies and other stuff.
-              </p>
+              <p>I talk about web technologies and other stuff.</p>
             </div>
           </div>
         );

@@ -1,0 +1,13 @@
+.bio {
+  display: flex;
+  align-items: center;
+
+  .authorImage {
+    border-radius: 50%;
+    border: 0.2rem solid #e71d73;
+  }
+
+  p {
+    margin: 0;
+  }
+}
