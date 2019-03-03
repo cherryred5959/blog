@@ -32,7 +32,8 @@ function Bio() {
                 marginRight: rhythm(1 / 2),
                 marginBottom: 0,
                 minWidth: 50,
-                borderRadius: `100%`
+                borderRadius: `100%`,
+                border: `0.2rem solid #e71d73`
               }}
               imgStyle={{
                 borderRadius: `50%`
