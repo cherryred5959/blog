@@ -14,7 +14,6 @@
     "gatsby-plugin-google-tagmanager": "^2.0.9",
     "gatsby-plugin-manifest": "^2.0.20",
     "gatsby-plugin-offline": "^2.0.24",
-    "gatsby-plugin-page-transitions": "^1.0.7",
     "gatsby-plugin-react-helmet": "^3.0.7",
     "gatsby-plugin-sharp": "^2.0.23",
     "gatsby-plugin-sitemap": "^2.0.6",
