@@ -16,7 +16,11 @@ class Layout extends React.Component {
           style={{
             ...scale(1.1),
             marginBottom: rhythm(1.5),
-            marginTop: 0
+            marginTop: 0,
+            WebkitBackgroundClip: `text`,
+            WebkitTextFillColor: `transparent`,
+            backgroundColor: `#2876f9`,
+            backgroundImage: `linear-gradient(315deg, #2876f9 0%, #6d17cb 74%)`
           }}
         >
           <Link
@@ -36,7 +40,11 @@ class Layout extends React.Component {
         <h3
           style={{
             fontFamily: `Montserrat, sans-serif`,
-            marginTop: 0
+            marginTop: 0,
+            WebkitBackgroundClip: `text`,
+            WebkitTextFillColor: `transparent`,
+            backgroundColor: `#2876f9`,
+            backgroundImage: `linear-gradient(315deg, #2876f9 0%, #6d17cb 74%)`
           }}
         >
           <Link

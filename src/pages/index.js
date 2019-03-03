@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link, graphql } from 'gatsby';
+import PageTransition from 'gatsby-plugin-page-transitions';
 
 import Bio from '../components/bio';
 import Layout from '../components/layout';
@@ -13,40 +14,42 @@ class BlogIndex extends React.Component {
     const posts = data.allMarkdownRemark.edges;
 
     return (
-      <Layout location={this.props.location} title={siteTitle}>
-        <SEO
-          title="Home"
-          keywords={[`blog`, `gatsby`, `javascript`, `react`]}
-        />
-        <Bio />
-        {posts.map(({ node }) => {
-          const title = node.frontmatter.title || node.fields.slug;
-          return (
-            <div key={node.fields.slug}>
-              <h3
-                style={{
-                  marginBottom: rhythm(1 / 4),
-                  fontSize: rhythm(1),
-                  backgroundColor: `#e71d73`,
-                  fontFamily: `Montserrat, sans-serif`,
-                  padding: `0.3em`,
-                  display: `table`
-                }}
-              >
-                <Link style={{ boxShadow: `none` }} to={node.fields.slug}>
-                  {title}
-                </Link>
-              </h3>
-              <small>{node.frontmatter.date}</small>
-              <p
-                dangerouslySetInnerHTML={{
-                  __html: node.frontmatter.description || node.excerpt
-                }}
-              />
-            </div>
-          );
-        })}
-      </Layout>
+      <PageTransition>
+        <Layout location={this.props.location} title={siteTitle}>
+          <SEO
+            title="Home"
+            keywords={[`blog`, `gatsby`, `javascript`, `react`]}
+          />
+          <Bio />
+          {posts.map(({ node }) => {
+            const title = node.frontmatter.title || node.fields.slug;
+            return (
+              <div key={node.fields.slug}>
+                <h3
+                  style={{
+                    marginBottom: rhythm(1 / 4),
+                    fontSize: rhythm(1),
+                    backgroundColor: `#e71d73`,
+                    fontFamily: `Montserrat, sans-serif`,
+                    padding: `0.3em`,
+                    display: `table`
+                  }}
+                >
+                  <Link style={{ boxShadow: `none` }} to={node.fields.slug}>
+                    {title}
+                  </Link>
+                </h3>
+                <small>{node.frontmatter.date}</small>
+                <p
+                  dangerouslySetInnerHTML={{
+                    __html: node.frontmatter.description || node.excerpt
+                  }}
+                />
+              </div>
+            );
+          })}
+        </Layout>
+      </PageTransition>
     );
   }
 }
