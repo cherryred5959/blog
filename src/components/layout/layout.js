@@ -63,6 +63,14 @@ class Layout extends React.Component {
               />
             </a>
           </span>
+          <span className={styles.kofi}>
+            <a href="https://ko-fi.com/O4O2RDTK" target="_blank">
+              <img
+                src="https://az743702.vo.msecnd.net/cdn/kofi5.png?v=0"
+                alt="Buy Me a Coffee at ko-fi.com"
+              />
+            </a>
+          </span>
           <span>
             <a
               type="application/rss+xml"
