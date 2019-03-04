@@ -1,3 +1,8 @@
+:root {
+  --primary-color: #e71d73;
+  --secondary-color: #2876f9;
+}
+
 ::selection {
   background: rgb(231, 29, 115, 0.59); /* WebKit/Blink Browsers */
 }
