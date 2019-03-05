@@ -4,6 +4,7 @@ module.exports = {
     author: `Dennis Morello`,
     description: `A dev blog by Dennis Morello.`,
     siteUrl: `https://morello.dev`,
+    language: `en`,
     social: {
       twitter: `dennismorello`
     },
@@ -58,7 +59,71 @@ module.exports = {
         id: process.env.GTM_ID
       }
     },
-    `gatsby-plugin-feed`,
+    {
+      resolve: `gatsby-plugin-feed`,
+      options: {
+        query: `
+          {
+            site {
+              siteMetadata {
+                title
+                author
+                description
+                language
+                site_url: siteUrl
+                categories: keywords
+              }
+            }
+          }
+        `,
+        feeds: [
+          {
+            serialize: ({ query: { site, allMarkdownRemark } }) => {
+              return allMarkdownRemark.edges.map(edge => {
+                return Object.assign({}, edge.node.frontmatter, {
+                  description:
+                    edge.node.frontmatter.description || edge.node.excerpt,
+                  author: site.siteMetadata.author,
+                  categories: Array.from(
+                    new Set([
+                      ...(site.siteMetadata.categories || []),
+                      ...(edge.node.frontmatter.tags || [])
+                    ])
+                  ),
+                  url: site.siteMetadata.site_url + edge.node.fields.slug,
+                  guid: site.siteMetadata.site_url + edge.node.fields.slug,
+                  custom_elements: [{ 'content:encoded': edge.node.html }]
+                });
+              });
+            },
+            query: `
+              {
+                allMarkdownRemark(
+                  limit: 1000,
+                  sort: { order: DESC, fields: [frontmatter___date] }
+                ) {
+                  edges {
+                    node {
+                      excerpt
+                      html
+                      fields { slug }
+                      frontmatter {
+                        title
+                        date
+                        description
+                        tags
+                      }
+                    }
+                  }
+                }
+              }
+            `,
+            output: '/rss.xml',
+            title: 'morello.dev'
+          }
+        ]
+      }
+    },
     `gatsby-plugin-sitemap`,
     {
       resolve: `gatsby-plugin-manifest`,
