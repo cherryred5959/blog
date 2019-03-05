@@ -118,8 +118,7 @@ module.exports = {
                 }
               }
             `,
-            output: '/rss.xml',
-            title: 'Dennis Morello'
+            output: '/rss.xml'
           }
         ]
       }
