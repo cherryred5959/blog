@@ -1,0 +1,57 @@
+:root {
+  --primary-color: #e71d73;
+  --secondary-color: #2876f9;
+  --code-bg: rgba(0, 0, 0, 0.67);
+  --inlineCode-bg: rgba(0, 0, 0, 0.59);
+  --inlineCode-text: #e6e6e6;
+}
+
+::selection {
+  background: rgba(231, 29, 115, 0.59); /* WebKit/Blink Browsers */
+}
+::-moz-selection {
+  background: rgba(231, 29, 115, 0.59); /* Gecko Browsers */
+}
+
+html {
+  min-height: 100vh;
+  background-color: #f907fc;
+  background-image: linear-gradient(315deg, #f907fc 0%, #05d6d9 74%);
+}
+
+.gatsby-highlight {
+  margin-bottom: 1.75rem;
+  -webkit-overflow-scrolling: touch;
+  overflow: auto;
+}
+
+@media (max-width: 672px) {
+  pre[class*='language-'] {
+    border-radius: 0;
+  }
+}
+
+.gatsby-highlight,
+.gatsby-highlight-code-line {
+  margin-right: -1.3125rem;
+  margin-left: -1.3125rem;
+}
+
+.gatsby-highlight pre[class*='language-'] {
+  float: left;
+  min-width: 100%;
+}
+
+pre[class*='language-'] {
+  overflow: auto;
+  padding: 1.3125rem;
+  background: var(--code-bg);
+}
+
+:not(pre) > code[class*='language-'] {
+  background: var(--inlineCode-bg);
+  color: var(--inlineCode-text);
+  border-radius: 0.3em;
+  padding: 0.15em 0.25em;
+  white-space: normal;
+}

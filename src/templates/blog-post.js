@@ -10,7 +10,7 @@ import { rhythm, scale } from '../utils/typography';
 class BlogPostTemplate extends React.Component {
   render() {
     const post = this.props.data.markdownRemark;
-    const siteTitle = this.props.data.site.siteMetadata.title;
+    const { title: siteTitle, keywords } = this.props.data.site.siteMetadata;
     const { previous, next } = this.props.pageContext;
 
     return (
@@ -18,22 +18,24 @@ class BlogPostTemplate extends React.Component {
         <SEO
           title={post.frontmatter.title}
           description={post.frontmatter.description || post.excerpt}
+          keywords={Array.from(
+            new Set([...(keywords || []), ...(post.frontmatter.tags || [])])
+          )}
         />
-        <h1>{post.frontmatter.title}</h1>
-        <p
-          style={{
-            ...scale(-1 / 5),
-            display: `block`,
-            marginBottom: rhythm(1),
-            marginTop: rhythm(-0.8)
-          }}
-        >
-          {post.frontmatter.date}
-        </p>
-        <div
-          className={styles.post}
-          dangerouslySetInnerHTML={{ __html: post.html }}
-        />
+        <div className={styles.post}>
+          <h1>{post.frontmatter.title}</h1>
+          <p
+            style={{
+              ...scale(-1 / 5),
+              display: `block`,
+              marginBottom: rhythm(1),
+              marginTop: rhythm(-0.8)
+            }}
+          >
+            {post.frontmatter.date}
+          </p>
+          <div dangerouslySetInnerHTML={{ __html: post.html }} />
+        </div>
         <hr
           style={{
             marginBottom: rhythm(1)
@@ -78,6 +80,7 @@ export const pageQuery = graphql`
       siteMetadata {
         title
         author
+        keywords
       }
     }
     markdownRemark(fields: { slug: { eq: $slug } }) {
@@ -88,6 +91,7 @@ export const pageQuery = graphql`
         title
         date(formatString: "MMMM DD, YYYY")
         description
+        tags
       }
     }
   }

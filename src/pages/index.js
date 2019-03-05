@@ -10,39 +10,38 @@ import { rhythm } from '../utils/typography';
 class BlogIndex extends React.Component {
   render() {
     const { data } = this.props;
-    const siteTitle = data.site.siteMetadata.title;
+    const { title: siteTitle, keywords } = data.site.siteMetadata;
     const posts = data.allMarkdownRemark.edges;
 
     return (
       <Layout location={this.props.location} title={siteTitle}>
-        <SEO
-          title="Home"
-          keywords={[`blog`, `gatsby`, `javascript`, `react`]}
-        />
-        <Bio />
-        <div className={styles.postsList}>
-          {posts.map(({ node }) => {
-            const title = node.frontmatter.title || node.fields.slug;
-            return (
-              <div key={node.fields.slug}>
-                <h3
-                  className={styles.postTitle}
-                  style={{
-                    marginBottom: rhythm(1 / 4),
-                    fontSize: rhythm(1)
-                  }}
-                >
-                  <Link to={node.fields.slug}>{title}</Link>
-                </h3>
-                <small>{node.frontmatter.date}</small>
-                <p
-                  dangerouslySetInnerHTML={{
-                    __html: node.frontmatter.description || node.excerpt
-                  }}
-                />
-              </div>
-            );
-          })}
+        <SEO title="Home" keywords={keywords || []} />
+        <div className={styles.index}>
+          <Bio />
+          <div className={styles.postsList}>
+            {posts.map(({ node }) => {
+              const title = node.frontmatter.title || node.fields.slug;
+              return (
+                <div key={node.fields.slug}>
+                  <h3
+                    className={styles.postTitle}
+                    style={{
+                      marginBottom: rhythm(1 / 4),
+                      fontSize: rhythm(1)
+                    }}
+                  >
+                    <Link to={node.fields.slug}>{title}</Link>
+                  </h3>
+                  <small>{node.frontmatter.date}</small>
+                  <p
+                    dangerouslySetInnerHTML={{
+                      __html: node.frontmatter.description || node.excerpt
+                    }}
+                  />
+                </div>
+              );
+            })}
+          </div>
         </div>
       </Layout>
     );
@@ -56,6 +55,7 @@ export const pageQuery = graphql`
     site {
       siteMetadata {
         title
+        keywords
       }
     }
     allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
@@ -69,6 +69,7 @@ export const pageQuery = graphql`
             date(formatString: "MMMM DD, YYYY")
             title
             description
+            tags
           }
         }
       }

@@ -6,7 +6,8 @@ module.exports = {
     siteUrl: `https://morello.dev`,
     social: {
       twitter: `dennismorello`
-    }
+    },
+    keywords: [`blog`, `gatsby`, `javascript`, `react`]
   },
   pathPrefix: `/`,
   plugins: [

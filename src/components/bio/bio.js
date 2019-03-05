@@ -36,7 +36,7 @@ function Bio() {
                 borderRadius: `50%`
               }}
             />
-            <div>
+            <div className={styles.intro}>
               <p>
                 A {'<dev />'} blog by{' '}
                 <a
