@@ -33,6 +33,7 @@
     "prism-themes": "^1.0.1",
     "prismjs": "^1.15.0",
     "react": "^16.8.3",
+    "react-animate-mount": "^1.0.1",
     "react-dom": "^16.8.3",
     "react-helmet": "^5.2.0",
     "react-typography": "^0.16.18",
