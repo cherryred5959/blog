@@ -8,7 +8,20 @@ module.exports = {
     social: {
       twitter: `dennismorello`
     },
-    keywords: [`blog`, `gatsby`, `javascript`, `react`]
+    keywords: [
+      `blog`,
+      `gatsby`,
+      `javascript`,
+      `js`,
+      `react`,
+      `reactjs`,
+      `html`,
+      `html5`,
+      `css`,
+      `css3`,
+      `dennis`,
+      `morello`
+    ]
   },
   pathPrefix: `/`,
   plugins: [
