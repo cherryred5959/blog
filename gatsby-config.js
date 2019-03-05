@@ -119,7 +119,7 @@ module.exports = {
               }
             `,
             output: '/rss.xml',
-            title: 'morello.dev'
+            title: 'Dennis Morello'
           }
         ]
       }
