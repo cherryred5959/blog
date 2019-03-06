@@ -89,5 +89,6 @@ public
 
 # MacOS files
 .DS_Store
+.metadata_never_index
 
 # End of https://www.gitignore.io/api/node
