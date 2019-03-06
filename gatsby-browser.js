@@ -1,3 +1,6 @@
+import React from 'react';
+import NewContentAvailable from './src/components/new-content-available/new-content-available';
+
 // Custom typefaces
 import 'typeface-montserrat';
 import 'typeface-merriweather';
@@ -12,3 +15,11 @@ import './src/styles/global.scss';
 export const onServiceWorkerUpdateReady = () => {
   window.dispatchEvent(new Event('serviceWorkerUpdateReady'));
 };
+
+// Add new content available alert
+export const wrapPageElement = ({ element }) => (
+  <>
+    <NewContentAvailable />
+    {element}
+  </>
+);

@@ -2,31 +2,10 @@ import React from 'react';
 import { Link } from 'gatsby';
 import styles from './layout.module.scss';
 
-import Alert from '../alert/alert';
-
 import { rhythm, scale } from '../../utils/typography';
 import gatsbyLogo from '../../../content/assets/gatsby-logo.svg';
 
 class Layout extends React.Component {
-  state = {
-    isNewContentAvailable: false
-  };
-
-  _handleNewContent = () => {
-    this.setState({ isNewContentAvailable: true });
-  };
-
-  componentDidMount() {
-    window.addEventListener('serviceWorkerUpdateReady', this._handleNewContent);
-  }
-
-  componentWillUnmount() {
-    window.removeEventListener(
-      'serviceWorkerUpdateReady',
-      this._handleNewContent
-    );
-  }
-
   render() {
     const { location, title, children } = this.props;
     const rootPath = `${__PATH_PREFIX__}/`;
@@ -59,10 +38,6 @@ class Layout extends React.Component {
           padding: `${rhythm(1.5)} ${rhythm(3 / 4)}`
         }}
       >
-        <Alert
-          show={this.state.isNewContentAvailable}
-          message="New content is available, refresh the page 🎉"
-        />
         <header>{header}</header>
         <main>{children}</main>
         <footer
