@@ -29,6 +29,10 @@ class BlogPostTemplate extends React.Component {
         name: 'article:author',
         content: author
       },
+      {
+        name: 'og:site_name',
+        content: siteTitle
+      },
       ...siteKeywords.map(k => ({
         name: 'article:tag',
         content: k

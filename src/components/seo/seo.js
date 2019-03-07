@@ -20,7 +20,6 @@ function SEO({ description, lang, meta, keywords, title, url, type }) {
             description
             author
             siteUrl
-            language
           }
         }
       }
@@ -30,7 +29,6 @@ function SEO({ description, lang, meta, keywords, title, url, type }) {
   const metaDescription = description || site.siteMetadata.description;
   const metaUrl = url || site.siteMetadata.siteUrl;
   const metaType = type || `website`;
-  const metaLanguage = lang || site.siteMetadata.language;
 
   return (
     <Helmet
@@ -38,7 +36,11 @@ function SEO({ description, lang, meta, keywords, title, url, type }) {
         lang
       }}
       title={title}
-      titleTemplate={`%s | ${site.siteMetadata.title}`}
+      titleTemplate={
+        site.siteMetadata.title === title
+          ? title
+          : `%s | ${site.siteMetadata.title}`
+      }
       meta={[
         {
           name: `description`,
@@ -62,7 +64,7 @@ function SEO({ description, lang, meta, keywords, title, url, type }) {
         },
         {
           property: `og:locale`,
-          content: metaLanguage
+          content: lang
         },
         {
           name: `twitter:card`,
@@ -95,7 +97,7 @@ function SEO({ description, lang, meta, keywords, title, url, type }) {
 }
 
 SEO.defaultProps = {
-  lang: `en`,
+  lang: `en_US`,
   meta: [],
   keywords: []
 };
