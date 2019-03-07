@@ -6,7 +6,9 @@ module.exports = {
     siteUrl: `https://morello.dev`,
     language: `en`,
     social: {
-      twitter: `dennismorello`
+      twitter: `dennismorello`,
+      instagram: `morello.dev`,
+      facebook: `morello.dev`
     },
     keywords: [
       `blog`,

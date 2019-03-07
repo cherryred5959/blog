@@ -10,17 +10,40 @@ import { rhythm, scale } from '../utils/typography';
 class BlogPostTemplate extends React.Component {
   render() {
     const post = this.props.data.markdownRemark;
-    const { title: siteTitle, keywords } = this.props.data.site.siteMetadata;
+    const {
+      title: siteTitle,
+      author,
+      siteUrl,
+      keywords
+    } = this.props.data.site.siteMetadata;
     const { previous, next } = this.props.pageContext;
+    const siteKeywords = Array.from(
+      new Set([...(keywords || []), ...(post.frontmatter.tags || [])])
+    );
+    const articleMeta = [
+      {
+        name: 'article:published_time',
+        content: post.frontmatter.published_time
+      },
+      {
+        name: 'article:author',
+        content: author
+      },
+      ...siteKeywords.map(k => ({
+        name: 'article:tag',
+        content: k
+      }))
+    ];
 
     return (
       <Layout location={this.props.location} title={siteTitle}>
         <SEO
           title={post.frontmatter.title}
           description={post.frontmatter.description || post.excerpt}
-          keywords={Array.from(
-            new Set([...(keywords || []), ...(post.frontmatter.tags || [])])
-          )}
+          type="article"
+          url={`${siteUrl}${post.fields.slug}`}
+          meta={articleMeta}
+          keywords={siteKeywords}
         />
         <div className={styles.post}>
           <h1>{post.frontmatter.title}</h1>
@@ -80,6 +103,7 @@ export const pageQuery = graphql`
       siteMetadata {
         title
         author
+        siteUrl
         keywords
       }
     }
@@ -87,9 +111,13 @@ export const pageQuery = graphql`
       id
       excerpt(pruneLength: 160)
       html
+      fields {
+        slug
+      }
       frontmatter {
         title
         date(formatString: "MMMM DD, YYYY")
+        published_time: date(formatString: "YYYY-MM-DD")
         description
         tags
       }
