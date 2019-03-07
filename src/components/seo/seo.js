@@ -64,7 +64,7 @@ function SEO({ description, lang, meta, keywords, title, url, type }) {
         },
         {
           property: `og:locale`,
-          content: lang
+          content: `en_US`
         },
         {
           name: `twitter:card`,
@@ -97,7 +97,7 @@ function SEO({ description, lang, meta, keywords, title, url, type }) {
 }
 
 SEO.defaultProps = {
-  lang: `en_US`,
+  lang: `en`,
   meta: [],
   keywords: []
 };
