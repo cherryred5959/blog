@@ -8,6 +8,16 @@ import SEO from '../components/seo/seo';
 import { rhythm } from '../utils/typography';
 
 class BlogIndex extends React.Component {
+  _getReadTime = wordCount => {
+    const mins = (wordCount / 265).toFixed(0);
+
+    if (mins <= 1) {
+      return `1 min read`;
+    } else {
+      return `${mins} mins read`;
+    }
+  };
+
   render() {
     const { data } = this.props;
     const { title: siteTitle, keywords } = data.site.siteMetadata;
@@ -32,7 +42,10 @@ class BlogIndex extends React.Component {
                   >
                     <Link to={node.fields.slug}>{title}</Link>
                   </h3>
-                  <small>{node.frontmatter.date}</small>
+                  <small>
+                    {node.frontmatter.date} –{' '}
+                    {this._getReadTime(node.wordCount.words)}
+                  </small>
                   <p
                     dangerouslySetInnerHTML={{
                       __html: node.frontmatter.description || node.excerpt
@@ -64,6 +77,9 @@ export const pageQuery = graphql`
           excerpt
           fields {
             slug
+          }
+          wordCount {
+            words
           }
           frontmatter {
             date(formatString: "MMMM DD, YYYY")
