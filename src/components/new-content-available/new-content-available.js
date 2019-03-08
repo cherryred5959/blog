@@ -8,6 +8,10 @@ const NewContentAvailable = () => {
     setIsNewContentAvailable(true);
   }
 
+  function _onAlertClicked() {
+    window.location.reload();
+  }
+
   useEffect(() => {
     window.addEventListener('serviceWorkerUpdateReady', _handleNewContent);
     return () => {
@@ -18,7 +22,8 @@ const NewContentAvailable = () => {
   return (
     <Alert
       show={isNewContentAvailable}
-      message="New content is available, refresh the page 🎉"
+      message="New content available, refresh the page 🎉"
+      onAlertClicked={_onAlertClicked}
     />
   );
 };
