@@ -17,6 +17,7 @@ class BlogPostTemplate extends React.Component {
       siteUrl,
       keywords
     } = this.props.data.site.siteMetadata;
+    const postUrl = `${siteUrl}${post.fields.slug}`;
     const { previous, next } = this.props.pageContext;
     const siteKeywords = Array.from(
       new Set([...(keywords || []), ...(post.frontmatter.tags || [])])
@@ -46,7 +47,7 @@ class BlogPostTemplate extends React.Component {
           title={post.frontmatter.title}
           description={post.frontmatter.description || post.excerpt}
           type="article"
-          url={`${siteUrl}${post.fields.slug}`}
+          url={postUrl}
           meta={articleMeta}
           keywords={siteKeywords}
         />
@@ -97,7 +98,11 @@ class BlogPostTemplate extends React.Component {
         </ul>
         <DiscussionEmbed
           shortname={process.env.DISQUS_SHORTNAME}
-          config={{ identifier: post.id, title: post.frontmatter.title }}
+          config={{
+            url: postUrl,
+            identifier: post.id,
+            title: post.frontmatter.title
+          }}
         />
       </Layout>
     );
