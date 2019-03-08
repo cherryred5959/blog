@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link, graphql } from 'gatsby';
+import { DiscussionEmbed } from 'disqus-react';
 import styles from '../styles/templates/blog-post.module.scss';
 
 import Bio from '../components/bio/bio';
@@ -94,6 +95,10 @@ class BlogPostTemplate extends React.Component {
             )}
           </li>
         </ul>
+        <DiscussionEmbed
+          shortname={process.env.DISQUS_SHORTNAME}
+          config={{ identifier: post.id, title: post.frontmatter.title }}
+        />
       </Layout>
     );
   }
