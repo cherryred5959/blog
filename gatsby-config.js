@@ -5,6 +5,7 @@ module.exports = {
     description: `A dev blog by Dennis Morello.`,
     siteUrl: `https://morello.dev`,
     language: `en`,
+    disqusShortname: `morello-dev`,
     social: {
       twitter: `dennismorello`,
       instagram: `morello.dev`,

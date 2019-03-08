@@ -15,7 +15,8 @@ class BlogPostTemplate extends React.Component {
       title: siteTitle,
       author,
       siteUrl,
-      keywords
+      keywords,
+      disqusShortname
     } = this.props.data.site.siteMetadata;
     const postUrl = `${siteUrl}${post.fields.slug}`;
     const { previous, next } = this.props.pageContext;
@@ -97,7 +98,7 @@ class BlogPostTemplate extends React.Component {
           </li>
         </ul>
         <DiscussionEmbed
-          shortname={process.env.DISQUS_SHORTNAME}
+          shortname={disqusShortname}
           config={{
             url: postUrl,
             identifier: post.id,
@@ -119,6 +120,7 @@ export const pageQuery = graphql`
         author
         siteUrl
         keywords
+        disqusShortname
       }
     }
     markdownRemark(fields: { slug: { eq: $slug } }) {
