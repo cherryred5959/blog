@@ -149,7 +149,7 @@ module.exports = {
         start_url: `/`,
         background_color: `#f907fc`,
         theme_color: `#ffffff`,
-        display: `standalone`,
+        display: `minimal-ui`,
         icon: `content/assets/dev-blog-logo.png`,
         include_favicon: true
       }
