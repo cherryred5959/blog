@@ -5,18 +5,24 @@ import styles from './alert.module.scss';
 
 const Alert = props => (
   <Animate show={props.show}>
-    <div className={styles.alert} onClick={props.onAlertClicked}>
+    <div
+      className={styles.alert}
+      onClick={props.onAlertClicked}
+      style={{ [props.position]: 0 }}
+    >
       {props.message}
     </div>
   </Animate>
 );
 
 Alert.defaultProps = {
-  show: true
+  show: true,
+  position: 'top'
 };
 
 Alert.propTypes = {
   show: PropTypes.bool,
+  position: PropTypes.oneOf(['top', 'bottom']),
   onAlertClicked: PropTypes.func,
   message: PropTypes.string
 };

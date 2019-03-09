@@ -1,6 +1,5 @@
 .alert {
   position: fixed;
-  top: 0;
   left: 0;
   right: 0;
   z-index: 99;
@@ -13,4 +12,10 @@
   align-items: center;
   justify-content: center;
   box-shadow: 0px 0px 16px 8px rgba(0, 0, 0, 0.59);
+  user-select: none;
+  transition: filter var(--transition-duration);
+
+  &:active {
+    filter: brightness(1.05);
+  }
 }
