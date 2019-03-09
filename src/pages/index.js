@@ -5,19 +5,10 @@ import styles from '../styles/pages/index.module.scss';
 import Bio from '../components/bio/bio';
 import Layout from '../components/layout/layout';
 import SEO from '../components/seo/seo';
+import { getReadTime } from '../utils/read-time';
 import { rhythm } from '../utils/typography';
 
 class BlogIndex extends React.Component {
-  _getReadTime = wordCount => {
-    const mins = (wordCount / 265).toFixed(0);
-
-    if (mins <= 1) {
-      return `1 min read`;
-    } else {
-      return `${mins} mins read`;
-    }
-  };
-
   render() {
     const { data } = this.props;
     const { title: siteTitle, keywords } = data.site.siteMetadata;
@@ -44,7 +35,7 @@ class BlogIndex extends React.Component {
                   </h3>
                   <small>
                     {node.frontmatter.date} –{' '}
-                    {this._getReadTime(node.wordCount.words)}
+                    {getReadTime(node.wordCount.words)}
                   </small>
                   <p
                     dangerouslySetInnerHTML={{

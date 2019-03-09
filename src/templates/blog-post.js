@@ -6,19 +6,10 @@ import styles from '../styles/templates/blog-post.module.scss';
 import Bio from '../components/bio/bio';
 import Layout from '../components/layout/layout';
 import SEO from '../components/seo/seo';
+import { getReadTime } from '../utils/read-time';
 import { rhythm, scale } from '../utils/typography';
 
 class BlogPostTemplate extends React.Component {
-  _getReadTime = wordCount => {
-    const mins = (wordCount / 265).toFixed(0);
-
-    if (mins <= 1) {
-      return `1 min read`;
-    } else {
-      return `${mins} mins read`;
-    }
-  };
-
   render() {
     const post = this.props.data.markdownRemark;
     const {
@@ -72,7 +63,7 @@ class BlogPostTemplate extends React.Component {
               marginTop: rhythm(-0.8)
             }}
           >
-            {post.frontmatter.date} – {this._getReadTime(post.wordCount.words)}
+            {post.frontmatter.date} – {getReadTime(post.wordCount.words)}
           </p>
           <div dangerouslySetInnerHTML={{ __html: post.html }} />
         </div>
