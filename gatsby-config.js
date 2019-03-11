@@ -1,6 +1,6 @@
 module.exports = {
   siteMetadata: {
-    title: `morello.dev`,
+    title: `Dennis Morello`,
     author: `Dennis Morello`,
     description: `A dev blog by Dennis Morello.`,
     siteUrl: `https://morello.dev`,
@@ -12,6 +12,8 @@ module.exports = {
       facebook: `morello.dev`
     },
     keywords: [
+      `dennis`,
+      `morello`,
       `blog`,
       `gatsby`,
       `javascript`,
@@ -21,9 +23,7 @@ module.exports = {
       `html`,
       `html5`,
       `css`,
-      `css3`,
-      `dennis`,
-      `morello`
+      `css3`
     ]
   },
   pathPrefix: `/`,

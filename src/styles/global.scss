@@ -19,6 +19,14 @@ html {
   background-image: linear-gradient(315deg, #f907fc 0%, #05d6d9 74%);
 }
 
+blockquote {
+  margin-left: -1.3125rem;
+  margin-right: -1.3125rem;
+  color: inherit;
+  opacity: 0.8;
+  border-left-color: inherit;
+}
+
 .gatsby-highlight {
   margin-bottom: 1.75rem;
   -webkit-overflow-scrolling: touch;
@@ -28,6 +36,10 @@ html {
 @media (max-width: 672px) {
   pre[class*='language-'] {
     border-radius: 0;
+  }
+
+  blockquote {
+    margin-right: 0;
   }
 }
 
