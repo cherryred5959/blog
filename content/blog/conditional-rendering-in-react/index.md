@@ -1,8 +1,8 @@
 ---
 title: Conditional Rendering In React
 date: '2019-03-11T18:00:00.000Z'
-description: A component-based approach to conditional rendering.
-tags: ['react', 'hooks', 'conditional rendering']
+description: A component composition-based approach to conditional rendering.
+tags: ['react', 'hooks', 'conditional rendering', 'component composition']
 ---
 
 The declarative approach of [React](https://reactjs.org) makes writing user interfaces easier than ever. In this post, I will explain how to conditionally render things by using components.
@@ -41,15 +41,15 @@ The techniques seen above are perfectly legal in React, but we can make use of c
 
 ## Conditional Rendering Using Component Composition
 
-We can use the component composition pattern to conditionally render things. Let's see how!
+We can use the component composition pattern to conditionally render parts of UI. Let's see how!
 
 > For a refresh on component composition pattern in React, see [this post](https://www.robinwieruch.de/react-component-composition) by Robin Wieruch.
 
 ### Conditional Components
 
-Every `if-then-else` code block can be split into two parts: the logical condition that has to be evaluated and the components to be conditionally rendered.
+Every if-then-else code block consists of two parts: the logical condition that has to be evaluated and the components to be conditionally rendered.
 
-We can go further with this consideration by turning the `if-then-else` block into `If`, `Then` and `Else` components. We pass the condition as props to `If`, and we put `Then` and `Else` into it. Inside the `Then` component we put the stuff to render when the condition evaluates to `true`, and inside the `Else` component we put the stuff to render when the condition evaluates to `false`:
+We can go further with this consideration by turning the if-then-else block into `If`, `Then` and `Else` components. We pass the condition as props to `If`, and we put `Then` and `Else` inside it. The `Then` component contains the stuff to render when the condition evaluates to `true`, and the `Else` component contains the stuff to render when the condition evaluates to `false`:
 
 ```jsx
 const UserLogStatus = props => (
@@ -64,4 +64,4 @@ const UserLogStatus = props => (
 );
 ```
 
-Everything sounds cool, but how could we implement the `If`, `Then` and `Else` components? Try to challenge yourself and come out with a solution 💡
+Everything sounds cool, but how could we implement the `If`, `Then` and `Else` components? Challenge yourself and try to come out with a solution 💡
