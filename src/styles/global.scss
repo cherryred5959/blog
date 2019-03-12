@@ -49,6 +49,14 @@ blockquote {
   margin-left: -1.3125rem;
 }
 
+.gatsby-highlight-code-line {
+  background-color: var(--code-bg);
+  display: block;
+  padding-right: 1em;
+  padding-left: 1.25em;
+  border-left: 0.25em solid var(--primary-color);
+}
+
 .gatsby-highlight pre[class*='language-'] {
   float: left;
   min-width: 100%;

@@ -5,7 +5,7 @@ description: A component composition-based approach to conditional rendering.
 tags: ['react', 'hooks', 'conditional rendering', 'component composition']
 ---
 
-The declarative approach of [React](https://reactjs.org) makes writing user interfaces easier than ever. In this post, I will explain how to conditionally render things by using components.
+The declarative approach of [React](https://reactjs.org) makes writing user interfaces easier than ever. In this post, I will explain how to conditionally render things by using the component composition pattern.
 
 ## Conditional Rendering – The Classic Way
 
@@ -15,9 +15,11 @@ A common way to conditionally render something in React is by using inline `if` 
 const UserNotifications = props => (
   <div>
     <h2>Hi {props.userName}!</h2>
+    // highlight-start
     {props.unreadNotifications > 0 && (
       <p>You have {props.unreadNotifications} notifications.</p>
     )}
+    // highlight-end
   </div>
 );
 ```
@@ -28,11 +30,13 @@ If you have to render either `A` or `B` depending on a conditional statement, th
 const UserLogStatus = props => (
   <div>
     <h2>Welcome to morello.dev</h2>
+    // highlight-start
     {props.loggedIn ? (
       <button onClick={props.onLogOutClicked}>Log Out</button>
     ) : (
       <button onClick={props.onLogInClicked}>Log In</button>
     )}
+    // highlight-end
   </div>
 );
 ```
