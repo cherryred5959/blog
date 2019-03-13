@@ -68,4 +68,96 @@ const UserLogStatus = props => (
 );
 ```
 
-Everything sounds cool, but how could we implement the `If`, `Then` and `Else` components? Challenge yourself and try to come out with a solution 💡
+Everything sounds cool, but how could we implement the `If`, `Then` and `Else` components? Here is my solution, but feel free to submit yours in the comment area 💡
+
+## If, Then, Else
+
+We start by considering the `If` component, as it is the parent. The idea is to take the condition passed as props, evaluate it and render the children of `Then` if the result is truthy, otherwise render the children of `Else`.
+
+> Note that, in order for this to work, `If` **must** be the parent of `Then` and `Else`. Violation of this constraint would make the code not working as expected.
+
+### If
+
+Let's see the code of the `If` component:
+
+```jsx
+const If = props => {
+  const thenComponent =
+    'length' in props.children
+      ? props.children.find(child => child.type.name === 'Then')
+      : props.children.type.name === 'Then'
+      ? props.children
+      : null;
+
+  const elseComponent =
+    'length' in props.children
+      ? props.children.find(child => child.type.name === 'Else')
+      : props.children.type.name === 'Else'
+      ? props.children
+      : null;
+
+  return props.condition ? thenComponent : elseComponent; // highlight-line
+};
+```
+
+The component logic is quite simple: we evaluate `props.condition` and return `Then` or `Else` depending on the result of the evaluation (see the highlighted line).
+
+Let's focus on the assignment of `thenComponent` (the same considerations hold for `elseComponent`):
+
+```jsx
+const thenComponent =
+  'length' in props.children
+    ? props.children.find(child => child.type.name === 'Then')
+    : props.children.type.name === 'Then'
+    ? props.children
+    : null;
+```
+
+We first check if `props.children` is an array or an object by testing if the property `length` is present:
+
+- if `props.children` is an array, we look for the child whose name is `"Then"`, and assign it to `thenComponent`
+- if `props.children` is not an array, we check if it is an instance of `Then`, and assign it to `thenComponent`
+
+If both tests fail, we assign `null` to `thenComponent` (so nothing will be rendered).
+
+### Else/Then
+
+Implementation of `Else` and `Then` component is the same. Let's see the code for the `Then` component as a representative example:
+
+```jsx
+const Then = props => props.children;
+```
+
+This super-tricky function returns its children. Easy enough.
+
+## Final Considerations
+
+We can pass just `Then` to `If` when we want to render something only if the condition is truthy:
+
+```jsx
+<If condition={1 + 1 === 2}>
+  <Then>1 plus 1 equals 2</Then>
+</If>
+```
+
+This is equivalent to inline `if` with logical `&&` operator, which is quicker but produces less readable code.
+
+The same is valid for `Else`:
+
+```jsx
+<If condition={myCondition}>
+  <Else>myCondition is false</Else>
+</If>
+```
+
+In this case, we could just negate the condition and change `Else` with `Then`:
+
+```jsx
+<If condition={!myCondition}>
+  <Then>myCondition is false</Then>
+</If>
+```
+
+## Live Demo
+
+See the live demo on [CodeSandbox](https://codesandbox.io/s/4wrn34q7pw).
