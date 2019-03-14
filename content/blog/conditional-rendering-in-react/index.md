@@ -41,7 +41,7 @@ const UserLogStatus = props => (
 );
 ```
 
-The techniques seen above are perfectly legal in React, but we can make use of component composition to make conditional rendering more elegant and easier to read.
+The techniques seen above are perfectly legal in React, but we can make use of the component composition to make conditional rendering more elegant and easier to read.
 
 ## Conditional Rendering Using Component Composition
 
@@ -113,10 +113,10 @@ const thenComponent =
     : null;
 ```
 
-We first check if `props.children` is an array or an object by testing if the property `length` is present:
+We first check if `props.children` is an array or an object by testing the presence of `length` property:
 
-- if `props.children` is an array, we look for the child whose name is `"Then"`, and assign it to `thenComponent`
-- if `props.children` is not an array, we check if it is an instance of `Then`, and assign it to `thenComponent`
+- if `props.children` is an array, we look for the child whose name is `"Then"`, and we assign it to `thenComponent`
+- if `props.children` is not an array, we check if it is an instance of `Then`, and we assign it to `thenComponent`
 
 If both tests fail, we assign `null` to `thenComponent` (so nothing will be rendered).
 
@@ -140,7 +140,7 @@ We can pass just `Then` to `If` when we want to render something only if the con
 </If>
 ```
 
-This is equivalent to inline `if` with logical `&&` operator, which is quicker but produces less readable code.
+This is equivalent to inline `if` with logical `&&` operator, which is quicker to write but produces less readable code.
 
 The same is valid for `Else`:
 
