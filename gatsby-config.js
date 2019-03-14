@@ -151,7 +151,8 @@ module.exports = {
         theme_color: `#ffffff`,
         display: `minimal-ui`,
         icon: `content/assets/dev-blog-logo.png`,
-        include_favicon: true
+        include_favicon: true,
+        gcm_sender_id: `482941778795`
       }
     },
     `gatsby-plugin-offline`,
