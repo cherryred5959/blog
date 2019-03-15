@@ -1,11 +1,15 @@
 {
-  "name": "gatsby-starter-blog",
+  "name": "dev-blog",
   "private": true,
-  "description": "A starter for a blog powered by Gatsby and Markdown",
+  "description": "Personal blog of Dennis Morello powered by Gatsby and Markdown",
   "version": "0.1.0",
-  "author": "Kyle Mathews <mathews.kyle@gmail.com>",
+  "author": {
+    "email": "dennis@morello.dev",
+    "name": "Dennis Morello",
+    "url": "https://morello.dev"
+  },
   "bugs": {
-    "url": "https://github.com/gatsbyjs/gatsby/issues"
+    "url": "https://gitlab.com/dennismorello/dev-blog/issues"
   },
   "dependencies": {
     "disqus-react": "^1.0.5",
@@ -48,7 +52,7 @@
   },
   "homepage": "https://github.com/gatsbyjs/gatsby-starter-blog#readme",
   "keywords": [
-    "gatsby"
+    "gatsby", ""
   ],
   "license": "MIT",
   "main": "n/a",
