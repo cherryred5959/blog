@@ -1,6 +1,7 @@
 :root {
   --primary-color: #e71d73;
-  --secondary-color: #2876f9;
+  --secondary-color: #1dc9e7;
+  --tertiary-color: #e7bb1d;
   --code-bg: rgba(0, 0, 0, 0.67);
   --inlineCode-bg: rgba(0, 0, 0, 0.59);
   --inlineCode-text: #e6e6e6;
@@ -16,14 +17,17 @@
 html {
   min-height: 100vh;
   background-color: var(--primary-color);
-  background-image: linear-gradient(315deg, #f907fc 0%, #05d6d9 74%);
+  background-image: linear-gradient(
+    315deg,
+    var(--primary-color) 0%,
+    var(--secondary-color) 74%
+  );
 }
 
 blockquote {
   margin-left: -1.3125rem;
   margin-right: -1.3125rem;
   color: inherit;
-  opacity: 0.8;
   border-left-color: inherit;
 }
 

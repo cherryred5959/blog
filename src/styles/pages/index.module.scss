@@ -1,14 +1,13 @@
 .index {
   .postsList {
     .postTitle {
-      background-color: var(--primary-color);
-      font-family: Montserrat, sans-serif;
-      padding: 0.3em;
-      display: table;
-    }
-
-    a {
-      box-shadow: none;
+      a {
+        font-family: Montserrat, sans-serif;
+        display: table;
+        box-shadow: none;
+        padding: 0.3em;
+        background-color: var(--primary-color);
+      }
     }
   }
 }
