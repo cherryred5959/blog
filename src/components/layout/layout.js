@@ -16,7 +16,7 @@ class Layout extends React.Component {
         <h1
           className={styles.siteTitle}
           style={{
-            ...scale(1.1),
+            ...scale(7 / 8),
             marginBottom: rhythm(1.5)
           }}
         >

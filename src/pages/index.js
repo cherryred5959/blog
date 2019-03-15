@@ -28,7 +28,7 @@ class BlogIndex extends React.Component {
                     className={styles.postTitle}
                     style={{
                       marginBottom: rhythm(1 / 4),
-                      fontSize: rhythm(1)
+                      fontSize: rhythm(7 / 8)
                     }}
                   >
                     <Link to={node.fields.slug}>{title}</Link>
