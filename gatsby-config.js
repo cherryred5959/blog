@@ -151,7 +151,8 @@ module.exports = {
         theme_color: `#ffffff`,
         display: `minimal-ui`,
         icon: `content/assets/dev-blog-logo.png`,
-        include_favicon: true
+        include_favicon: true,
+        crossOrigin: `use-credentials`
       }
     },
     `gatsby-plugin-offline`,
