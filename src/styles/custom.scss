@@ -17,6 +17,7 @@
 
 .animated-card {
   height: 100%;
+  border-radius: $radius;
   box-shadow: 0px 10px 30px -5px rgba(0, 0, 0, 0.3);
   transition: box-shadow 0.5s;
   will-change: transform;
@@ -28,12 +29,12 @@
   .card {
     &.is-post {
       height: 100%;
-      border-radius: 6px;
+      border-radius: $radius;
 
       .image {
         height: 180px;
-        border-top-left-radius: 6px;
-        border-top-right-radius: 6px;
+        border-top-left-radius: $radius;
+        border-top-right-radius: $radius;
       }
     }
   }
