@@ -156,7 +156,7 @@ module.exports = {
         short_name: `Dev Blog`,
         start_url: `/`,
         background_color: `#ffffff`,
-        theme_color: `#4a4a4a`,
+        theme_color: `#363636`,
         display: `minimal-ui`,
         icon: `content/assets/code-logo-1024.png`,
         include_favicon: true,
