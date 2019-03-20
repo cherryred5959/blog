@@ -99,7 +99,9 @@ const BlogPostTemplate = props => {
               )}
             </li>
           </ul>
+
           <hr />
+          
           <DiscussionEmbed
             shortname={disqusShortname}
             config={{
