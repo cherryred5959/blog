@@ -17,13 +17,22 @@ const Animated = props => {
     config: { mass: 5, tension: 350, friction: 40 }
   }));
 
+  const _updateSpring = (x, y, element) =>
+    setSpring({ xys: calc(x, y, element) });
+
+  const _resetSpring = () => setSpring({ xys: [0, 0, 1] });
+
   return (
     <animated.div
       className={props.className}
       onMouseMove={({ clientX: x, clientY: y, currentTarget }) =>
-        setSpring({ xys: calc(x, y, currentTarget) })
+        _updateSpring(x, y, currentTarget)
       }
-      onMouseLeave={() => setSpring({ xys: [0, 0, 1] })}
+      onMouseLeave={_resetSpring}
+      onTouchMove={({ touches, currentTarget }) => {
+        _updateSpring(touches[0].clientX, touches[0].clientY, currentTarget);
+      }}
+      onTouchEnd={_resetSpring}
       style={{ transform: spring.xys.interpolate(trans) }}
     >
       {props.children}
