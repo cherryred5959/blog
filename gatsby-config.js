@@ -4,12 +4,14 @@ module.exports = {
     author: `Dennis Morello`,
     description: `A dev blog by Dennis Morello.`,
     siteUrl: `https://morello.dev`,
+    siteDomain: `morello.dev`,
     language: `en`,
     disqusShortname: `morello-dev`,
     social: {
-      twitter: `dennismorello`,
-      instagram: `morello.dev`,
-      facebook: `morello.dev`
+      instagram: `dennismrl`,
+      facebook: `dennismorello`,
+      linkedin: `dennismorello`,
+      twitter: `dennismorello`
     },
     keywords: [
       `dennis`,
@@ -50,7 +52,13 @@ module.exports = {
           {
             resolve: `gatsby-remark-images`,
             options: {
-              maxWidth: 590
+              maxWidth: 800,
+              linkImagesToOriginal: false,
+              withWebp: {
+                quality: 80
+              },
+              wrapperStyle: fluidResult =>
+                `flex:${Math.round(fluidResult.aspectRatio, 2)};`
             }
           },
           `gatsby-remark-embed-video`,
@@ -148,20 +156,14 @@ module.exports = {
         short_name: `Dev Blog`,
         start_url: `/`,
         background_color: `#ffffff`,
-        theme_color: `#e71d73`,
+        theme_color: `#4a4a4a`,
         display: `minimal-ui`,
-        icon: `content/assets/dev-blog-logo.png`,
+        icon: `content/assets/code-logo-1024.png`,
         include_favicon: true,
         crossOrigin: `use-credentials`
       }
     },
     `gatsby-plugin-offline`,
-    `gatsby-plugin-react-helmet`,
-    {
-      resolve: `gatsby-plugin-typography`,
-      options: {
-        pathToConfigModule: `src/utils/typography`
-      }
-    }
+    `gatsby-plugin-react-helmet`
   ]
 };

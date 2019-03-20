@@ -3,6 +3,7 @@ title: Conditional Rendering In React
 date: '2019-03-11T18:00:00.000Z'
 description: A component composition-based approach to conditional rendering.
 tags: ['react', 'hooks', 'conditional rendering', 'component composition']
+cover: './cover.png'
 ---
 
 The declarative approach of [React](https://reactjs.org) makes writing user interfaces easier than ever. In this post, I will explain how to conditionally render things by using the component composition pattern.
@@ -15,11 +16,9 @@ A common way to conditionally render something in React is by using inline `if` 
 const UserNotifications = props => (
   <div>
     <h2>Hi {props.userName}!</h2>
-    // highlight-start
     {props.unreadNotifications > 0 && (
       <p>You have {props.unreadNotifications} notifications.</p>
     )}
-    // highlight-end
   </div>
 );
 ```
@@ -30,13 +29,11 @@ If you have to render either `A` or `B` depending on a conditional statement, th
 const UserLogStatus = props => (
   <div>
     <h2>Welcome to morello.dev</h2>
-    // highlight-start
     {props.loggedIn ? (
       <button onClick={props.onLogOutClicked}>Log Out</button>
     ) : (
       <button onClick={props.onLogInClicked}>Log In</button>
     )}
-    // highlight-end
   </div>
 );
 ```
@@ -96,11 +93,11 @@ const If = props => {
       ? props.children
       : null;
 
-  return props.condition ? thenComponent : elseComponent; // highlight-line
+  return props.condition ? thenComponent : elseComponent;
 };
 ```
 
-The component logic is quite simple: we evaluate `props.condition` and return `Then` or `Else` depending on the result of the evaluation (see the highlighted line).
+The component logic is quite simple: we evaluate `props.condition` and return `Then` or `Else` depending on the result of the evaluation (see the `return` statement).
 
 Let's focus on the assignment of `thenComponent` (the same considerations hold for `elseComponent`):
 
@@ -120,9 +117,9 @@ We first check if `props.children` is an array or an object by testing the prese
 
 If both tests fail, we assign `null` to `thenComponent` (so nothing will be rendered).
 
-### Else/Then
+### Then/Else
 
-Implementation of `Else` and `Then` component is the same. Let's see the code for the `Then` component as a representative example:
+Implementation of `Then` and `Else` component is the same. Let's see the code for the `Then` component as a representative example:
 
 ```jsx
 const Then = props => props.children;

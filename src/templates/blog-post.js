@@ -1,115 +1,119 @@
 import React from 'react';
 import { Link, graphql } from 'gatsby';
+import LazyImage from 'gatsby-image';
+import { Container, Content, Section, Subtitle, Title } from 'bloomer';
 import { DiscussionEmbed } from 'disqus-react';
-import styles from '../styles/templates/blog-post.module.scss';
 
-import Bio from '../components/bio/bio';
 import Layout from '../components/layout/layout';
 import SEO from '../components/seo/seo';
 import { getReadTime } from '../utils/read-time';
-import { rhythm, scale } from '../utils/typography';
 
-class BlogPostTemplate extends React.Component {
-  render() {
-    const post = this.props.data.markdownRemark;
-    const {
-      title: siteTitle,
-      author,
-      siteUrl,
-      keywords,
-      disqusShortname
-    } = this.props.data.site.siteMetadata;
-    const postUrl = `${siteUrl}${post.fields.slug}`;
-    const { previous, next } = this.props.pageContext;
-    const siteKeywords = Array.from(
-      new Set([...(keywords || []), ...(post.frontmatter.tags || [])])
-    );
-    const articleMeta = [
-      {
-        name: 'article:published_time',
-        content: post.frontmatter.published_time
-      },
-      {
-        name: 'article:author',
-        content: author
-      },
-      {
-        name: 'og:site_name',
-        content: siteTitle
-      },
-      ...siteKeywords.map(k => ({
-        name: 'article:tag',
-        content: k
-      }))
-    ];
+const BlogPostTemplate = props => {
+  const post = props.data.markdownRemark;
+  const cover = post.frontmatter.cover;
+  const {
+    title: siteTitle,
+    author,
+    siteUrl,
+    keywords,
+    disqusShortname
+  } = props.data.site.siteMetadata;
+  const postUrl = `${siteUrl}${post.fields.slug}`;
+  const { previous, next } = props.pageContext;
+  const siteKeywords = Array.from(
+    new Set([...(keywords || []), ...(post.frontmatter.tags || [])])
+  );
+  const articleMeta = [
+    {
+      name: 'article:published_time',
+      content: post.frontmatter.published_time
+    },
+    {
+      name: 'article:author',
+      content: author
+    },
+    {
+      name: 'og:site_name',
+      content: siteTitle
+    },
+    ...siteKeywords.map(k => ({
+      name: 'article:tag',
+      content: k
+    }))
+  ];
 
-    return (
-      <Layout location={this.props.location} title={siteTitle}>
-        <SEO
-          title={post.frontmatter.title}
-          description={post.frontmatter.description || post.excerpt}
-          type="article"
-          url={postUrl}
-          meta={articleMeta}
-          keywords={siteKeywords}
-        />
-        <div className={styles.post}>
-          <h1>{post.frontmatter.title}</h1>
-          <p
+  return (
+    <Layout location={props.location} title={siteTitle}>
+      <SEO
+        title={post.frontmatter.title}
+        description={post.frontmatter.description || post.excerpt}
+        type="article"
+        url={postUrl}
+        meta={articleMeta}
+        keywords={siteKeywords}
+      />
+      <Section>
+        <Container>
+          <div>
+            <Title>{post.frontmatter.title}</Title>
+            <Subtitle>
+              <small>
+                {post.frontmatter.date} – {getReadTime(post.wordCount.words)}
+              </small>
+            </Subtitle>
+            {cover && (
+              <LazyImage
+                fluid={cover.childImageSharp.fluid}
+                alt={post.frontmatter.title}
+                style={{
+                  maxWidth: cover.childImageSharp.fluid.presentationWidth,
+                  margin: '0.5rem auto 2rem auto'
+                }}
+              />
+            )}
+            <Content dangerouslySetInnerHTML={{ __html: post.html }} />
+          </div>
+
+          <hr />
+
+          <ul
             style={{
-              ...scale(-1 / 5),
-              display: `block`,
-              marginBottom: rhythm(1),
-              marginTop: rhythm(-0.8)
+              display: `flex`,
+              flexWrap: `wrap`,
+              justifyContent: `space-between`,
+              listStyle: `none`,
+              padding: 0
             }}
           >
-            {post.frontmatter.date} – {getReadTime(post.wordCount.words)}
-          </p>
-          <div dangerouslySetInnerHTML={{ __html: post.html }} />
-        </div>
-        <hr
-          style={{
-            marginBottom: rhythm(1)
-          }}
-        />
-        <Bio />
-
-        <ul
-          style={{
-            display: `flex`,
-            flexWrap: `wrap`,
-            justifyContent: `space-between`,
-            listStyle: `none`,
-            padding: 0
-          }}
-        >
-          <li>
-            {previous && (
-              <Link to={previous.fields.slug} rel="prev">
-                ← {previous.frontmatter.title}
-              </Link>
-            )}
-          </li>
-          <li>
-            {next && (
-              <Link to={next.fields.slug} rel="next">
-                {next.frontmatter.title} →
-              </Link>
-            )}
-          </li>
-        </ul>
-        <DiscussionEmbed
-          shortname={disqusShortname}
-          config={{
-            url: postUrl,
-            identifier: post.id,
-            title: post.frontmatter.title
-          }}
-        />
-      </Layout>
-    );
-  }
-}
+            <li>
+              {previous && (
+                <Link to={previous.fields.slug} rel="prev">
+                  ← {previous.frontmatter.title}
+                </Link>
+              )}
+            </li>
+            <li>
+              {next && (
+                <Link to={next.fields.slug} rel="next">
+                  {next.frontmatter.title} →
+                </Link>
+              )}
+            </li>
+          </ul>
+          <hr />
+          <DiscussionEmbed
+            shortname={disqusShortname}
+            config={{
+              url: postUrl,
+              identifier: post.id,
+              title: post.frontmatter.title
+            }}
+          />
+        </Container>
+      </Section>
+    </Layout>
+  );
+};
 
 export default BlogPostTemplate;
 
@@ -140,6 +144,14 @@ export const pageQuery = graphql`
         published_time: date(formatString: "YYYY-MM-DD")
         description
         tags
+        cover {
+          childImageSharp {
+            fluid(maxWidth: 800, quality: 80) {
+              ...GatsbyImageSharpFluid_withWebp
+              presentationWidth
+            }
+          }
+        }
       }
     }
   }

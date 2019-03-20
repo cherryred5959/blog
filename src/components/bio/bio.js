@@ -7,31 +7,20 @@
 
 import React from 'react';
 import { StaticQuery, graphql } from 'gatsby';
-import Image from 'gatsby-image';
+import LazyImage from 'gatsby-image';
 import styles from './bio.module.scss';
 
-import { rhythm } from '../../utils/typography';
-
-function Bio() {
+const Bio = props => {
   return (
     <StaticQuery
       query={bioQuery}
       render={data => {
         const { author, social } = data.site.siteMetadata;
         return (
-          <div
-            className={styles.bio}
-            style={{
-              marginBottom: rhythm(2.5)
-            }}
-          >
-            <Image
-              className={styles.authorImage}
+          <div>
+            <LazyImage
               fixed={data.avatar.childImageSharp.fixed}
               alt={author}
-              style={{
-                marginRight: rhythm(1 / 2)
-              }}
               imgStyle={{
                 borderRadius: `50%`
               }}
@@ -55,14 +44,14 @@ function Bio() {
       }}
     />
   );
-}
+};
 
 const bioQuery = graphql`
   query BioQuery {
     avatar: file(absolutePath: { regex: "/profile-pic.jpg/" }) {
       childImageSharp {
         fixed(width: 50, height: 50) {
-          ...GatsbyImageSharpFixed
+          ...GatsbyImageSharpFixed_withWebp
         }
       }
     }

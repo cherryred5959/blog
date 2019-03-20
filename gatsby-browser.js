@@ -1,9 +1,20 @@
-// Custom typefaces
-import 'typeface-montserrat';
-import 'typeface-merriweather';
+// Font Awesome
+import '@fortawesome/fontawesome-free/css/all.min.css';
 
-// Prism.js code highlight
-import 'prism-themes/themes/prism-a11y-dark.css';
+// Global Style
+import './src/styles/index.scss';
 
-// Global style
-import './src/styles/global.scss';
+// Typist CSS
+import 'react-typist/dist/Typist.css';
+
+// Prism.js Theme
+import 'prism-themes/themes/prism-ghcolors.css';
+
+// Load Fonts
+import WebFont from 'webfontloader';
+
+WebFont.load({
+  google: {
+    families: ['Quicksand:400,700']
+  }
+});

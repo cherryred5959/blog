@@ -1,56 +1,102 @@
 import React from 'react';
 import { Link, graphql } from 'gatsby';
-import styles from '../styles/pages/index.module.scss';
+import LazyImage from 'gatsby-image';
+import {
+  Card,
+  CardContent,
+  CardImage,
+  Column,
+  Columns,
+  Container,
+  Content,
+  Hero,
+  HeroBody,
+  Title,
+  Section,
+  Subtitle
+} from 'bloomer';
+import Typist from 'react-typist';
 
-import Bio from '../components/bio/bio';
 import Layout from '../components/layout/layout';
 import SEO from '../components/seo/seo';
+
 import { getReadTime } from '../utils/read-time';
-import { rhythm } from '../utils/typography';
 
-class BlogIndex extends React.Component {
-  render() {
-    const { data } = this.props;
-    const { title: siteTitle, keywords } = data.site.siteMetadata;
-    const posts = data.allMarkdownRemark.edges;
+const BlogIndex = props => {
+  const { data, location } = props;
+  const { title: siteTitle, siteDomain, keywords } = data.site.siteMetadata;
+  const posts = data.allMarkdownRemark.edges;
 
-    return (
-      <Layout location={this.props.location} title={siteTitle}>
-        <SEO title={siteTitle} keywords={keywords || []} />
-        <div className={styles.index}>
-          <Bio />
-          <div className={styles.postsList}>
+  return (
+    <Layout location={location}>
+      <SEO title={siteTitle} keywords={keywords || []} />
+      <Hero isSize="medium" isColor="dark">
+        <HeroBody>
+          <Container>
+            <Title>{siteDomain}</Title>
+            <Subtitle>
+              <Typist startDelay={1000}>
+                A blog about web technologies and other stuff{' '}
+                <span role="img" aria-label="jsx-a11y/accessible-emoji">
+                  💻
+                </span>
+              </Typist>
+            </Subtitle>
+          </Container>
+        </HeroBody>
+      </Hero>
+      <Section>
+        <Container>
+          <Columns isMultiline>
             {posts.map(({ node }) => {
               const title = node.frontmatter.title || node.fields.slug;
               return (
-                <div key={node.fields.slug}>
-                  <h3
-                    className={styles.postTitle}
-                    style={{
-                      marginBottom: rhythm(1 / 4),
-                      fontSize: rhythm(7 / 8)
-                    }}
-                  >
-                    <Link to={node.fields.slug}>{title}</Link>
-                  </h3>
-                  <small>
-                    {node.frontmatter.date} –{' '}
-                    {getReadTime(node.wordCount.words)}
-                  </small>
-                  <p
-                    dangerouslySetInnerHTML={{
-                      __html: node.frontmatter.description || node.excerpt
-                    }}
-                  />
-                </div>
+                <Column
+                  isSize={{
+                    fullhd: 4,
+                    desktop: 4,
+                    tablet: 6
+                  }}
+                  key={node.fields.slug}
+                >
+                  <Card className="is-post">
+                    {node.frontmatter.cover && (
+                      <CardImage>
+                        <Link to={node.fields.slug}>
+                          <LazyImage
+                            fluid={node.frontmatter.cover.childImageSharp.fluid}
+                            alt={title}
+                            className="image"
+                          />
+                        </Link>
+                      </CardImage>
+                    )}
+                    <CardContent>
+                      <Title>
+                        <Link to={node.fields.slug}>{title}</Link>
+                      </Title>
+                      <Subtitle>
+                        <small>
+                          {node.frontmatter.date} –{' '}
+                          {getReadTime(node.wordCount.words)}
+                        </small>
+                      </Subtitle>
+                      <Content
+                        dangerouslySetInnerHTML={{
+                          __html: node.frontmatter.description || node.excerpt
+                        }}
+                      />
+                    </CardContent>
+                  </Card>
+                </Column>
               );
             })}
-          </div>
-        </div>
-      </Layout>
-    );
-  }
-}
+          </Columns>
+        </Container>
+      </Section>
+    </Layout>
+  );
+};
 
 export default BlogIndex;
 
@@ -59,6 +105,7 @@ export const pageQuery = graphql`
     site {
       siteMetadata {
         title
+        siteDomain
         keywords
       }
     }
@@ -77,6 +124,13 @@ export const pageQuery = graphql`
             title
             description
             tags
+            cover {
+              childImageSharp {
+                fluid(maxHeight: 180, quality: 80) {
+                  ...GatsbyImageSharpFluid_withWebp
+                }
+              }
+            }
           }
         }
       }

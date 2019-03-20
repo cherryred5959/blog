@@ -1,0 +1,46 @@
+.content {
+  .tag,
+  .number {
+    display: inline;
+    padding: inherit;
+    font-size: inherit;
+    line-height: inherit;
+    text-align: inherit;
+    vertical-align: inherit;
+    border-radius: inherit;
+    font-weight: inherit;
+    white-space: inherit;
+    background: inherit;
+    margin: inherit;
+  }
+}
+
+.card {
+  &.is-post {
+    height: 100%;
+    border-radius: 6px;
+
+    .image {
+      height: 180px;
+      border-top-left-radius: 6px;
+      border-top-right-radius: 6px;
+      transition: transform 0.3s cubic-bezier(0.52, 0.28, 0.47, 1.15),
+        -webkit-transform 0.3s cubic-bezier(0.52, 0.28, 0.47, 1.15),
+        border-radius 0.3s cubic-bezier(0.52, 0.28, 0.47, 1.15),
+        -webkit-transform 0.3s cubic-bezier(0.52, 0.28, 0.47, 1.15),
+        box-shadow 0.3s cubic-bezier(0.52, 0.28, 0.47, 1.15),
+        -webkit-transform 0.3s cubic-bezier(0.52, 0.28, 0.47, 1.15);
+    }
+
+    @media screen and (min-width: 768px) {
+      &:hover {
+        .image {
+          transform: scale(1.05);
+          border-radius: 6px;
+          box-shadow: 0 10px 40px 0 rgba(62, 57, 107, 0.2),
+            0 2px 9px 0 rgba(62, 57, 107, 0.2);
+        }
+      }
+    }
+  }
+}
