@@ -20,8 +20,6 @@ import Typist from 'react-typist';
 import Layout from '../components/layout/layout';
 import SEO from '../components/seo/seo';
 
-import { getReadTime } from '../utils/read-time';
-
 const BlogIndex = props => {
   const { data, location } = props;
   const { title: siteTitle, siteDomain, keywords } = data.site.siteMetadata;
@@ -77,8 +75,7 @@ const BlogIndex = props => {
                       </Title>
                       <Subtitle>
                         <small>
-                          {node.frontmatter.date} –{' '}
-                          {getReadTime(node.wordCount.words)}
+                          {`${node.frontmatter.date} – ${node.timeToRead} min`}
                         </small>
                       </Subtitle>
                       <Content
@@ -112,12 +109,10 @@ export const pageQuery = graphql`
     allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
       edges {
         node {
+          timeToRead
           excerpt
           fields {
             slug
-          }
-          wordCount {
-            words
           }
           frontmatter {
             date(formatString: "MMMM DD, YYYY")

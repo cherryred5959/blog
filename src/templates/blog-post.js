@@ -6,7 +6,6 @@ import { DiscussionEmbed } from 'disqus-react';
 
 import Layout from '../components/layout/layout';
 import SEO from '../components/seo/seo';
-import { getReadTime } from '../utils/read-time';
 
 const BlogPostTemplate = props => {
   const post = props.data.markdownRemark;
@@ -57,9 +56,9 @@ const BlogPostTemplate = props => {
           <div>
             <Title>{post.frontmatter.title}</Title>
             <Subtitle>
-              <small>
-                {post.frontmatter.date} – {getReadTime(post.wordCount.words)}
-              </small>
+              <small>{`${post.frontmatter.date} – ${
+                post.timeToRead
+              } min`}</small>
             </Subtitle>
             {cover && (
               <LazyImage
@@ -131,12 +130,10 @@ export const pageQuery = graphql`
     markdownRemark(fields: { slug: { eq: $slug } }) {
       id
       excerpt(pruneLength: 160)
+      timeToRead
       html
       fields {
         slug
-      }
-      wordCount {
-        words
       }
       frontmatter {
         title
