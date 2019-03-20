@@ -35,6 +35,14 @@ const BlogPostTemplate = props => {
       name: 'og:site_name',
       content: siteTitle
     },
+    {
+      name: 'og:image',
+      content: cover && `${siteUrl}${cover.childImageSharp.fluid.originalImg}`
+    },
+    {
+      name: 'twitter:image',
+      content: cover && `${siteUrl}${cover.childImageSharp.fluid.originalImg}`
+    },
     ...siteKeywords.map(k => ({
       name: 'article:tag',
       content: k
@@ -101,7 +109,7 @@ const BlogPostTemplate = props => {
           </ul>
 
           <hr />
-          
+
           <DiscussionEmbed
             shortname={disqusShortname}
             config={{
@@ -148,6 +156,7 @@ export const pageQuery = graphql`
             fluid(maxWidth: 800, quality: 80) {
               ...GatsbyImageSharpFluid_withWebp
               presentationWidth
+              originalImg
             }
           }
         }
