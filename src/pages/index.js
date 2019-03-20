@@ -17,8 +17,9 @@ import {
 } from 'bloomer';
 import Typist from 'react-typist';
 
-import Layout from '../components/layout/layout';
-import SEO from '../components/seo/seo';
+import Layout from '../components/layout';
+import SEO from '../components/seo';
+import Animated from '../components/animated';
 
 const BlogIndex = props => {
   const { data, location } = props;
@@ -57,34 +58,39 @@ const BlogIndex = props => {
                   }}
                   key={node.fields.slug}
                 >
-                  <Card className="is-post">
-                    {node.frontmatter.cover && (
-                      <CardImage>
-                        <Link to={node.fields.slug}>
-                          <LazyImage
-                            fluid={node.frontmatter.cover.childImageSharp.fluid}
-                            alt={title}
-                            className="image"
+                  <Animated className="animated-card">
+                    <Link to={node.fields.slug}>
+                      <Card className="is-post">
+                        {node.frontmatter.cover && (
+                          <CardImage>
+                            <LazyImage
+                              fluid={
+                                node.frontmatter.cover.childImageSharp.fluid
+                              }
+                              alt={title}
+                              className="image"
+                            />
+                          </CardImage>
+                        )}
+                        <CardContent>
+                          <Title>{title}</Title>
+                          <Subtitle>
+                            <small>
+                              {`${node.frontmatter.date} – ${
+                                node.timeToRead
+                              } min`}
+                            </small>
+                          </Subtitle>
+                          <Content
+                            dangerouslySetInnerHTML={{
+                              __html:
+                                node.frontmatter.description || node.excerpt
+                            }}
                           />
-                        </Link>
-                      </CardImage>
-                    )}
-                    <CardContent>
-                      <Title>
-                        <Link to={node.fields.slug}>{title}</Link>
-                      </Title>
-                      <Subtitle>
-                        <small>
-                          {`${node.frontmatter.date} – ${node.timeToRead} min`}
-                        </small>
-                      </Subtitle>
-                      <Content
-                        dangerouslySetInnerHTML={{
-                          __html: node.frontmatter.description || node.excerpt
-                        }}
-                      />
-                    </CardContent>
-                  </Card>
+                        </CardContent>
+                      </Card>
+                    </Link>
+                  </Animated>
                 </Column>
               );
             })}

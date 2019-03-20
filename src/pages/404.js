@@ -2,8 +2,8 @@ import React from 'react';
 import { graphql } from 'gatsby';
 import { Container, Hero, HeroBody, Subtitle, Title } from 'bloomer';
 
-import Layout from '../components/layout/layout';
-import SEO from '../components/seo/seo';
+import Layout from '../components/layout';
+import SEO from '../components/seo';
 
 const NotFoundPage = props => {
   const { data, location } = props;

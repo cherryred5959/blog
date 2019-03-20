@@ -4,8 +4,8 @@ import LazyImage from 'gatsby-image';
 import { Container, Content, Section, Subtitle, Title } from 'bloomer';
 import { DiscussionEmbed } from 'disqus-react';
 
-import Layout from '../components/layout/layout';
-import SEO from '../components/seo/seo';
+import Layout from '../components/layout';
+import SEO from '../components/seo';
 
 const BlogPostTemplate = props => {
   const post = props.data.markdownRemark;

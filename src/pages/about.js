@@ -3,8 +3,8 @@ import { graphql } from 'gatsby';
 import { Container, Hero, HeroBody, Title, Section, Subtitle } from 'bloomer';
 import Typist from 'react-typist';
 
-import Layout from '../components/layout/layout';
-import SEO from '../components/seo/seo';
+import Layout from '../components/layout';
+import SEO from '../components/seo';
 
 const About = props => {
   const { data, location } = props;

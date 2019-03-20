@@ -12,7 +12,7 @@ import {
   NavbarStart
 } from 'bloomer';
 
-import codeLogo from '../../../content/assets/code-logo-64.png';
+import codeLogo from '../../content/assets/code-logo-64.png';
 
 const Header = props => {
   const [isActive, setIsActive] = useState(false);
