@@ -5,7 +5,7 @@ const calc = (x, y, element) => {
   const rect = element.getBoundingClientRect();
   const left = x - rect.x;
   const top = y - rect.y;
-  return [-(top - rect.height / 2) / 20, (left - rect.width / 2) / 20, 1.05];
+  return [-(top - rect.height / 2) / 20, (left - rect.width / 2) / 20, 1.04];
 };
 
 const trans = (x, y, s) =>
@@ -14,7 +14,7 @@ const trans = (x, y, s) =>
 const Animated = props => {
   const [spring, setSpring] = useSpring(() => ({
     xys: [0, 0, 1],
-    config: { mass: 5, tension: 350, friction: 40 }
+    config: { mass: 5, tension: 350, friction: 40, clamp: true }
   }));
 
   const _updateSpring = (x, y, element) =>
