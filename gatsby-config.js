@@ -52,7 +52,7 @@ module.exports = {
           {
             resolve: `gatsby-remark-images`,
             options: {
-              maxWidth: 800,
+              maxWidth: 1600,
               linkImagesToOriginal: false,
               withWebp: {
                 quality: 80
@@ -72,6 +72,7 @@ module.exports = {
           `gatsby-remark-external-links`,
           `gatsby-remark-copy-linked-files`,
           `gatsby-remark-smartypants`,
+          `gatsby-remark-a11y-emoji`,
           `gatsby-remark-prismjs`
         ]
       }
