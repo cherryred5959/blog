@@ -95,6 +95,7 @@ const BlogPostTemplate = props => {
       />
       <Progress
         isColor="success"
+        isHidden={scrollTop <= 0}
         value={scrollTop}
         max={scrollMax}
         style={{
