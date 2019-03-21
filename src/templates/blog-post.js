@@ -1,7 +1,14 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, graphql } from 'gatsby';
 import LazyImage from 'gatsby-image';
-import { Container, Content, Section, Subtitle, Title } from 'bloomer';
+import {
+  Container,
+  Content,
+  Progress,
+  Section,
+  Subtitle,
+  Title
+} from 'bloomer';
 import { DiscussionEmbed } from 'disqus-react';
 
 import Layout from '../components/layout';
@@ -49,6 +56,33 @@ const BlogPostTemplate = props => {
     }))
   ];
 
+  const [scrollY, setScrollY] = useState();
+  const [scrollMax, setScrollMax] = useState();
+
+  const _handlePageScroll = () => {
+    setScrollY(window.scrollY);
+  };
+
+  const _handleWindowResize = () => {
+    setScrollMax(document.body.clientHeight - window.innerHeight);
+  };
+
+  useEffect(() => {
+    setScrollY(window.scrollY);
+    window.addEventListener('scroll', _handlePageScroll);
+    return () => {
+      window.removeEventListener('scroll', _handlePageScroll);
+    };
+  }, []);
+
+  useEffect(() => {
+    setScrollMax(document.body.clientHeight - window.innerHeight);
+    window.addEventListener('resize', _handleWindowResize);
+    return () => {
+      window.removeEventListener('resize', _handleWindowResize);
+    };
+  }, []);
+
   return (
     <Layout location={props.location} title={siteTitle}>
       <SEO
@@ -58,6 +92,20 @@ const BlogPostTemplate = props => {
         url={postUrl}
         meta={articleMeta}
         keywords={siteKeywords}
+      />
+      <Progress
+        isColor="success"
+        value={scrollY}
+        max={scrollMax}
+        style={{
+          borderRadius: 0,
+          position: 'fixed',
+          left: 0,
+          top: 0,
+          right: 0,
+          height: '0.25rem',
+          zIndex: 1
+        }}
       />
       <Section>
         <Container>
