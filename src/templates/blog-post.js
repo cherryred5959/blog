@@ -56,11 +56,11 @@ const BlogPostTemplate = props => {
     }))
   ];
 
-  const [scrollY, setScrollY] = useState();
+  const [scrollTop, setScrollTop] = useState();
   const [scrollMax, setScrollMax] = useState();
 
   const _handlePageScroll = () => {
-    setScrollY(window.scrollY);
+    setScrollTop(window.scrollY);
   };
 
   const _handleWindowResize = () => {
@@ -68,7 +68,7 @@ const BlogPostTemplate = props => {
   };
 
   useEffect(() => {
-    setScrollY(window.scrollY);
+    setScrollTop(window.scrollY);
     window.addEventListener('scroll', _handlePageScroll);
     return () => {
       window.removeEventListener('scroll', _handlePageScroll);
@@ -95,7 +95,7 @@ const BlogPostTemplate = props => {
       />
       <Progress
         isColor="success"
-        value={scrollY}
+        value={scrollTop}
         max={scrollMax}
         style={{
           borderRadius: 0,
