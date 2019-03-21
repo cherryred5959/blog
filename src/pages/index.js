@@ -12,7 +12,6 @@ import {
   Hero,
   HeroBody,
   Title,
-  Section,
   Subtitle
 } from 'bloomer';
 import Typist from 'react-typist';
@@ -29,7 +28,7 @@ const BlogIndex = props => {
   return (
     <Layout location={location}>
       <SEO title={siteTitle} keywords={keywords || []} />
-      <Hero isSize="medium" isColor="dark">
+      <Hero isColor="dark" className="is-fullheight-with-navbar">
         <HeroBody>
           <Container>
             <Title>{siteDomain}</Title>
@@ -44,59 +43,61 @@ const BlogIndex = props => {
           </Container>
         </HeroBody>
       </Hero>
-      <Section>
-        <Container>
-          <Columns isMultiline>
-            {posts.map(({ node }) => {
-              const title = node.frontmatter.title || node.fields.slug;
-              return (
-                <Column
-                  isSize={{
-                    fullhd: 4,
-                    desktop: 4,
-                    tablet: 6
-                  }}
-                  key={node.fields.slug}
-                >
-                  <Animated className="animated-card">
-                    <Link to={node.fields.slug}>
-                      <Card className="is-post">
-                        {node.frontmatter.cover && (
-                          <CardImage>
-                            <LazyImage
-                              fluid={
-                                node.frontmatter.cover.childImageSharp.fluid
-                              }
-                              alt={title}
-                              className="image"
+      <Hero isFullHeight>
+        <HeroBody>
+          <Container>
+            <Columns isMultiline>
+              {posts.map(({ node }) => {
+                const title = node.frontmatter.title || node.fields.slug;
+                return (
+                  <Column
+                    isSize={{
+                      fullhd: 4,
+                      desktop: 4,
+                      tablet: 6
+                    }}
+                    key={node.fields.slug}
+                  >
+                    <Animated className="animated-card">
+                      <Link to={node.fields.slug}>
+                        <Card className="is-post">
+                          {node.frontmatter.cover && (
+                            <CardImage>
+                              <LazyImage
+                                fluid={
+                                  node.frontmatter.cover.childImageSharp.fluid
+                                }
+                                alt={title}
+                                className="image"
+                              />
+                            </CardImage>
+                          )}
+                          <CardContent>
+                            <Title>{title}</Title>
+                            <Subtitle>
+                              <small>
+                                {`${node.frontmatter.date} – ${
+                                  node.timeToRead
+                                } min`}
+                              </small>
+                            </Subtitle>
+                            <Content
+                              dangerouslySetInnerHTML={{
+                                __html:
+                                  node.frontmatter.description || node.excerpt
+                              }}
                             />
-                          </CardImage>
-                        )}
-                        <CardContent>
-                          <Title>{title}</Title>
-                          <Subtitle>
-                            <small>
-                              {`${node.frontmatter.date} – ${
-                                node.timeToRead
-                              } min`}
-                            </small>
-                          </Subtitle>
-                          <Content
-                            dangerouslySetInnerHTML={{
-                              __html:
-                                node.frontmatter.description || node.excerpt
-                            }}
-                          />
-                        </CardContent>
-                      </Card>
-                    </Link>
-                  </Animated>
-                </Column>
-              );
-            })}
-          </Columns>
-        </Container>
-      </Section>
+                          </CardContent>
+                        </Card>
+                      </Link>
+                    </Animated>
+                  </Column>
+                );
+              })}
+            </Columns>
+          </Container>
+        </HeroBody>
+      </Hero>
     </Layout>
   );
 };
