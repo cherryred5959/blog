@@ -94,7 +94,6 @@ const BlogPostTemplate = props => {
         keywords={siteKeywords}
       />
       <Progress
-        isColor="success"
         isHidden={scrollTop <= 0}
         value={scrollTop}
         max={scrollMax}
@@ -104,7 +103,7 @@ const BlogPostTemplate = props => {
           left: 0,
           top: 0,
           right: 0,
-          height: '0.25rem',
+          height: '0.3rem',
           zIndex: 1
         }}
       />
