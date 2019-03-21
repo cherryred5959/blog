@@ -3,6 +3,8 @@ import { Link, StaticQuery, graphql } from 'gatsby';
 import LazyImage from 'gatsby-image';
 import {
   Button,
+  Columns,
+  Column,
   Container,
   Footer as BloomerFooter,
   Icon,
@@ -22,7 +24,7 @@ const Footer = props => {
       render={data => (
         <BloomerFooter>
           <Container>
-            <Level>
+            <Level className="has-text-centered-mobile">
               <LevelLeft>
                 <LevelItem>
                   <Media>
@@ -46,62 +48,69 @@ const Footer = props => {
                   </Media>
                 </LevelItem>
               </LevelLeft>
-              <LevelRight>
+              <LevelRight className="is-inline-flex-mobile">
                 <LevelItem>
-                  <Button
-                    isInverted
-                    isColor="danger"
-                    href={`https://instagram.com/${
-                      data.site.siteMetadata.social.instagram
-                    }`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    title="Instagram"
-                  >
-                    <Icon className="fab fa-instagram fa-lg" alt="Instagram" />
-                  </Button>
-                </LevelItem>
-                <LevelItem>
-                  <Button
-                    isInverted
-                    isColor="link"
-                    href={`https://facebook.com/${
-                      data.site.siteMetadata.social.facebook
-                    }`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    title="Facebook"
-                  >
-                    <Icon className="fab fa-facebook fa-lg" />
-                  </Button>
-                </LevelItem>
-                <LevelItem>
-                  <Button
-                    isInverted
-                    isColor="info"
-                    href={`https://twitter.com/${
-                      data.site.siteMetadata.social.twitter
-                    }`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    title="Twitter"
-                  >
-                    <Icon className="fab fa-twitter fa-lg" />
-                  </Button>
-                </LevelItem>
-                <LevelItem>
-                  <Button
-                    isInverted
-                    isColor="info"
-                    href={`https://linkedin.com/in/${
-                      data.site.siteMetadata.social.linkedin
-                    }`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    title="LinkedIn"
-                  >
-                    <Icon className="fab fa-linkedin fa-lg" />
-                  </Button>
+                  <Columns isMobile>
+                    <Column>
+                      <Button
+                        isInverted
+                        isColor="danger"
+                        href={`https://instagram.com/${
+                          data.site.siteMetadata.social.instagram
+                        }`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        title="Instagram"
+                      >
+                        <Icon
+                          className="fab fa-instagram fa-lg"
+                          alt="Instagram"
+                        />
+                      </Button>
+                    </Column>
+                    <Column>
+                      <Button
+                        isInverted
+                        isColor="link"
+                        href={`https://facebook.com/${
+                          data.site.siteMetadata.social.facebook
+                        }`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        title="Facebook"
+                      >
+                        <Icon className="fab fa-facebook fa-lg" />
+                      </Button>
+                    </Column>
+                    <Column>
+                      <Button
+                        isInverted
+                        isColor="info"
+                        href={`https://twitter.com/${
+                          data.site.siteMetadata.social.twitter
+                        }`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        title="Twitter"
+                      >
+                        <Icon className="fab fa-twitter fa-lg" />
+                      </Button>
+                    </Column>
+                    <Column>
+                      <Button
+                        isInverted
+                        isColor="info"
+                        href={`https://linkedin.com/in/${
+                          data.site.siteMetadata.social.linkedin
+                        }`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        title="LinkedIn"
+                      >
+                        <Icon className="fab fa-linkedin fa-lg" />
+                      </Button>
+                    </Column>
+                  </Columns>
                 </LevelItem>
               </LevelRight>
             </Level>
