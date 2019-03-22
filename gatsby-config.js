@@ -73,7 +73,13 @@ module.exports = {
           `gatsby-remark-copy-linked-files`,
           `gatsby-remark-smartypants`,
           `gatsby-remark-a11y-emoji`,
-          `gatsby-remark-prismjs`
+          {
+            resolve: `gatsby-remark-prismjs`,
+            options: {
+              showLineNumbers: true,
+              noInlineHighlight: true
+            }
+          }
         ]
       }
     },
