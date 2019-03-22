@@ -38,7 +38,7 @@ const UserLogStatus = props => (
 );
 ```
 
-The techniques seen above are perfectly legal in React, but we can make use of the component composition to make conditional rendering more elegant and easier to read.
+The techniques seen above are perfectly legal in React, but we can use component composition to make conditional rendering more elegant and easier to read.
 
 ## Conditional Rendering Using Component Composition
 
