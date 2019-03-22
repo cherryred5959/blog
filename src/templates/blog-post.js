@@ -1,18 +1,12 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { Link, graphql } from 'gatsby';
 import LazyImage from 'gatsby-image';
-import {
-  Container,
-  Content,
-  Progress,
-  Section,
-  Subtitle,
-  Title
-} from 'bloomer';
+import { Container, Content, Section, Subtitle, Title } from 'bloomer';
 import { DiscussionEmbed } from 'disqus-react';
 
 import Layout from '../components/layout';
 import SEO from '../components/seo';
+import ReadingProgress from '../components/reading-progress';
 
 const BlogPostTemplate = props => {
   const post = props.data.markdownRemark;
@@ -56,33 +50,6 @@ const BlogPostTemplate = props => {
     }))
   ];
 
-  const [scrollTop, setScrollTop] = useState();
-  const [scrollMax, setScrollMax] = useState();
-
-  const _handlePageScroll = () => {
-    setScrollTop(window.scrollY);
-  };
-
-  const _handleWindowResize = () => {
-    setScrollMax(document.body.clientHeight - window.innerHeight);
-  };
-
-  useEffect(() => {
-    setScrollTop(window.scrollY);
-    window.addEventListener('scroll', _handlePageScroll);
-    return () => {
-      window.removeEventListener('scroll', _handlePageScroll);
-    };
-  }, []);
-
-  useEffect(() => {
-    setScrollMax(document.body.clientHeight - window.innerHeight);
-    window.addEventListener('resize', _handleWindowResize);
-    return () => {
-      window.removeEventListener('resize', _handleWindowResize);
-    };
-  }, []);
-
   return (
     <Layout location={props.location} title={siteTitle}>
       <SEO
@@ -93,21 +60,7 @@ const BlogPostTemplate = props => {
         meta={articleMeta}
         keywords={siteKeywords}
       />
-      <Progress
-        isColor="info"
-        isHidden={scrollTop <= 0}
-        value={scrollTop}
-        max={scrollMax}
-        style={{
-          borderRadius: 0,
-          position: 'fixed',
-          left: 0,
-          top: 0,
-          right: 0,
-          height: '0.3rem',
-          zIndex: 1
-        }}
-      />
+      <ReadingProgress />
       <Section>
         <Container>
           <div>
