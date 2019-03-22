@@ -7,6 +7,7 @@ import { DiscussionEmbed } from 'disqus-react';
 import Layout from '../components/layout';
 import SEO from '../components/seo';
 import ReadingProgress from '../components/reading-progress';
+import ScrollToTop from '../components/scroll-to-top';
 
 const BlogPostTemplate = props => {
   const post = props.data.markdownRemark;
@@ -81,6 +82,7 @@ const BlogPostTemplate = props => {
               />
             )}
             <Content dangerouslySetInnerHTML={{ __html: post.html }} />
+            <ScrollToTop />
           </div>
 
           <hr />
