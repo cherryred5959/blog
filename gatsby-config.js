@@ -135,8 +135,10 @@ module.exports = {
                 feed_url: siteMetadata.siteUrl + `/rss.xml`,
                 site_url: siteMetadata.siteUrl,
                 image_url: siteMetadata.siteUrl + `/icons/icon-144x144.png`,
-                managingEditor: siteMetadata.email,
-                webMaster: siteMetadata.email,
+                managingEditor: `${siteMetadata.email} (${
+                  siteMetadata.author
+                })`,
+                webMaster: `${siteMetadata.email} (${siteMetadata.author})`,
                 generator: `GatsbyJS`
               };
             },
