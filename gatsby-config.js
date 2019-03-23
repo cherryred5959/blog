@@ -2,6 +2,7 @@ module.exports = {
   siteMetadata: {
     title: `Dennis Morello`,
     author: `Dennis Morello`,
+    email: `dennis@morello.dev`,
     description: `A dev blog by Dennis Morello.`,
     siteUrl: `https://morello.dev`,
     siteDomain: `morello.dev`,
@@ -129,12 +130,13 @@ module.exports = {
               return {
                 title: siteMetadata.title,
                 description: siteMetadata.description,
-                author: siteMetadata.author,
                 language: siteMetadata.language,
                 categories: siteMetadata.keywords,
                 feed_url: siteMetadata.siteUrl + `/rss.xml`,
                 site_url: siteMetadata.siteUrl,
                 image_url: siteMetadata.siteUrl + `/icons/icon-144x144.png`,
+                managingEditor: siteMetadata.email,
+                webMaster: siteMetadata.email,
                 generator: `GatsbyJS`
               };
             },
@@ -164,6 +166,7 @@ module.exports = {
               siteMetadata {
                 title
                 author
+                email
                 description
                 language
                 siteUrl
