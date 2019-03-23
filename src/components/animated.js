@@ -1,21 +1,26 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { useSpring, animated } from 'react-spring';
-
-const calc = (x, y, element) => {
-  const rect = element.getBoundingClientRect();
-  const left = x - rect.x;
-  const top = y - rect.y;
-  return [-(top - rect.height / 2) / 20, (left - rect.width / 2) / 20, 1.04];
-};
-
-const trans = (x, y, s) =>
-  `perspective(1200px) rotateX(${x}deg) rotateY(${y}deg) scale(${s})`;
 
 const Animated = props => {
   const [spring, setSpring] = useSpring(() => ({
     xys: [0, 0, 1],
     config: { mass: 5, tension: 350, friction: 40, clamp: true }
   }));
+
+  const calc = (x, y, element) => {
+    const rect = element.getBoundingClientRect();
+    const left = x - rect.x;
+    const top = y - rect.y;
+    return [
+      -(top - rect.height / 2) / props.dampingFactor,
+      (left - rect.width / 2) / props.dampingFactor,
+      props.scaleFactor
+    ];
+  };
+
+  const trans = (x, y, s) =>
+    `perspective(1200px) rotateX(${x}deg) rotateY(${y}deg) scale(${s})`;
 
   const _updateSpring = (x, y, element) =>
     setSpring({ xys: calc(x, y, element) });
@@ -24,7 +29,7 @@ const Animated = props => {
 
   return (
     <animated.div
-      className={props.className}
+      className={`animated ${props.className}`}
       onMouseMove={({ clientX: x, clientY: y, currentTarget }) =>
         _updateSpring(x, y, currentTarget)
       }
@@ -38,6 +43,16 @@ const Animated = props => {
       {props.children}
     </animated.div>
   );
+};
+
+Animated.defaultProps = {
+  dampingFactor: 20,
+  scaleFactor: 1.04
+};
+
+Animated.propTypes = {
+  dampingFactor: PropTypes.number,
+  scaleFactor: PropTypes.number
 };
 
 export default Animated;

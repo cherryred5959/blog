@@ -15,9 +15,7 @@
   }
 }
 
-.animated-card {
-  height: 100%;
-  border-radius: $radius;
+.animated {
   box-shadow: 0px 10px 30px -5px rgba(0, 0, 0, 0.3);
   transition: box-shadow 0.5s;
   will-change: transform;
@@ -26,15 +24,20 @@
     box-shadow: 0px 30px 100px -10px rgba(0, 0, 0, 0.4);
   }
 
-  .card {
-    &.is-post {
-      height: 100%;
-      border-radius: $radius;
+  &.animated-card {
+    height: 100%;
+    border-radius: $radius;
 
-      .image {
-        height: 180px;
-        border-top-left-radius: $radius;
-        border-top-right-radius: $radius;
+    .card {
+      &.is-post {
+        height: 100%;
+        border-radius: $radius;
+
+        .image {
+          height: 180px;
+          border-top-left-radius: $radius;
+          border-top-right-radius: $radius;
+        }
       }
     }
   }
