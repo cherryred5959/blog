@@ -4,6 +4,7 @@ date: '2019-03-11T18:00:00.000Z'
 description: A component composition-based approach to conditional rendering.
 tags: ['react', 'hooks', 'conditional rendering', 'component composition']
 cover: './cover.png'
+draft: false
 ---
 
 The declarative approach of [React](https://reactjs.org) makes writing user interfaces easier than ever. In this post, I will explain how to conditionally render things by using the component composition pattern.
