@@ -80,7 +80,6 @@ const BlogPostTemplate = props => {
                     cover.childImageSharp.fluid.presentationWidth /
                     cover.childImageSharp.fluid.aspectRatio,
                   margin: '0.5rem auto 2rem auto',
-                  borderRadius: '0.5rem',
                   boxShadow: '0px 10px 30px -5px rgba(0, 0, 0, 0.3)'
                 }}
               />
@@ -160,7 +159,7 @@ export const pageQuery = graphql`
         tags
         cover {
           childImageSharp {
-            fluid(maxWidth: 1600, maxHeight: 600, quality: 80) {
+            fluid(maxWidth: 1600, maxHeight: 800, quality: 80) {
               ...GatsbyImageSharpFluid_withWebp
               presentationWidth
               originalImg
