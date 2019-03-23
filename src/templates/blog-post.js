@@ -63,29 +63,29 @@ const BlogPostTemplate = props => {
       <ReadingProgress />
       <Section>
         <Container>
-          <div>
-            <Title>{post.frontmatter.title}</Title>
-            <Subtitle>
-              <small>{`${post.frontmatter.date} – ${
-                post.timeToRead
-              } min`}</small>
-            </Subtitle>
-            {cover && (
-              <LazyImage
-                fluid={cover.childImageSharp.fluid}
-                alt={post.frontmatter.title}
-                style={{
-                  maxWidth: cover.childImageSharp.fluid.presentationWidth,
-                  maxHeight:
-                    cover.childImageSharp.fluid.presentationWidth /
-                    cover.childImageSharp.fluid.aspectRatio,
-                  margin: '0.5rem auto 2rem auto',
-                  boxShadow: '0px 10px 30px -5px rgba(0, 0, 0, 0.3)'
-                }}
-              />
-            )}
-            <Content dangerouslySetInnerHTML={{ __html: post.html }} />
+          <Title>{post.frontmatter.title}</Title>
+          <Subtitle>
+            <small>{`${post.frontmatter.date} – ${post.timeToRead} min`}</small>
+          </Subtitle>
+        </Container>
+        {cover && (
+          <div style={{ margin: `2rem -1.5rem` }}>
+            <LazyImage
+              fluid={cover.childImageSharp.fluid}
+              alt={post.frontmatter.title}
+              style={{
+                maxWidth: cover.childImageSharp.fluid.presentationWidth,
+                maxHeight:
+                  cover.childImageSharp.fluid.presentationWidth /
+                  cover.childImageSharp.fluid.aspectRatio,
+                margin: `0 auto`,
+                boxShadow: `0px 10px 30px -5px rgba(0, 0, 0, 0.3)`
+              }}
+            />
           </div>
+        )}
+        <Container>
+          <Content dangerouslySetInnerHTML={{ __html: post.html }} />
 
           <hr />
 
@@ -159,7 +159,7 @@ export const pageQuery = graphql`
         tags
         cover {
           childImageSharp {
-            fluid(maxWidth: 1600, maxHeight: 800, quality: 80) {
+            fluid(maxWidth: 1400, maxHeight: 600, quality: 80) {
               ...GatsbyImageSharpFluid_withWebp
               presentationWidth
               originalImg
