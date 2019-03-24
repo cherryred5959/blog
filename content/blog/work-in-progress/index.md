@@ -7,8 +7,8 @@ cover: './cover.jpg'
 draft: false
 ---
 
-I am working hard to put online exciting content as soon as possible. In the meanwhile, have fun with this kittie:
+I am working hard to put online exciting content as soon as possible.
 
-![](./cat.gif)
+![](https://media.giphy.com/media/JIX9t2j0ZTN9S/giphy.gif)
 
 See you soon!
