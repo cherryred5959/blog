@@ -4,14 +4,14 @@ import {
   Columns,
   Column,
   Container,
+  Content,
   Hero,
   HeroBody,
   Title,
-  Section,
   Subtitle
 } from 'bloomer';
 import Typist from 'react-typist';
-import { useSpring, animated } from 'react-spring';
+import Fade from 'react-reveal/Fade';
 
 import Layout from '../components/layout';
 import SEO from '../components/seo';
@@ -21,18 +21,13 @@ const About = props => {
   const { data, location } = props;
   const { title: siteTitle, keywords } = data.site.siteMetadata;
 
-  const animProps = useSpring({
-    from: { marginLeft: '-100vw' },
-    to: { marginLeft: '0vw' }
-  });
-
   return (
     <Layout location={location}>
       <SEO title="About" keywords={keywords || []} />
       <Hero isColor="dark" className="is-fullheight-with-navbar">
         <HeroBody>
           <Container>
-            <animated.div style={animProps}>
+            <Fade left>
               <Columns>
                 <Column style={{ margin: `auto 0` }}>
                   <Title>{siteTitle}</Title>
@@ -49,20 +44,32 @@ const About = props => {
                   <BigProfilePic />
                 </Column>
               </Columns>
-            </animated.div>
+            </Fade>
           </Container>
         </HeroBody>
       </Hero>
-      <Section>
-        <Container>
-          <Title>
-            <span role="img" aria-label="jsx-a11y/accessible-emoji">
-              👋🏻
-            </span>
-          </Title>
-          <p>Bla bla bla...</p>
-        </Container>
-      </Section>
+      <Hero isFullHeight>
+        <HeroBody>
+          <Container>
+            <Fade left>
+              <React.Fragment>
+                <Title>
+                  <span role="img" aria-label="jsx-a11y/accessible-emoji">
+                    👋🏻
+                  </span>
+                </Title>
+                <Content>
+                  <p>
+                    I am an Italian front-end engineer. Geek by nature, I have
+                    always been interested in technology, music and photography.
+                  </p>
+                  <p>Bla bla bla...</p>
+                </Content>
+              </React.Fragment>
+            </Fade>
+          </Container>
+        </HeroBody>
+      </Hero>
     </Layout>
   );
 };
@@ -75,6 +82,7 @@ export const pageQuery = graphql`
       siteMetadata {
         title
         keywords
+        author
       }
     }
   }

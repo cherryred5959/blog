@@ -15,7 +15,7 @@ import {
   Subtitle
 } from 'bloomer';
 import Typist from 'react-typist';
-import { useSpring, animated } from 'react-spring';
+import Fade from 'react-reveal/Fade';
 
 import Layout from '../components/layout';
 import SEO from '../components/seo';
@@ -26,18 +26,13 @@ const BlogIndex = props => {
   const { title: siteTitle, siteDomain, keywords } = data.site.siteMetadata;
   const posts = data.allMarkdownRemark.edges;
 
-  const animProps = useSpring({
-    from: { marginLeft: '-100vw' },
-    to: { marginLeft: '0vw' }
-  });
-
   return (
     <Layout location={location}>
       <SEO title={siteTitle} keywords={keywords || []} />
       <Hero isColor="dark" className="is-fullheight-with-navbar">
         <HeroBody>
           <Container>
-            <animated.div style={animProps}>
+            <Fade left>
               <Title>{siteDomain}</Title>
               <Subtitle>
                 <Typist startDelay={1000}>
@@ -47,62 +42,64 @@ const BlogIndex = props => {
                   </span>
                 </Typist>
               </Subtitle>
-            </animated.div>
+            </Fade>
           </Container>
         </HeroBody>
       </Hero>
       <Hero isFullHeight>
         <HeroBody>
           <Container>
-            <Columns isMultiline>
-              {posts.map(({ node }) => {
-                const title = node.frontmatter.title || node.fields.slug;
-                return (
-                  <Column
-                    isSize={{
-                      fullhd: 4,
-                      desktop: 4,
-                      tablet: 6
-                    }}
-                    key={node.fields.slug}
-                  >
-                    <Animated className="animated-card">
-                      <Link to={node.fields.slug}>
-                        <Card className="is-post">
-                          {node.frontmatter.cover && (
-                            <CardImage>
-                              <LazyImage
-                                fluid={
-                                  node.frontmatter.cover.childImageSharp.fluid
-                                }
-                                alt={title}
-                                className="image"
+            <Fade left>
+              <Columns isMultiline>
+                {posts.map(({ node }) => {
+                  const title = node.frontmatter.title || node.fields.slug;
+                  return (
+                    <Column
+                      isSize={{
+                        fullhd: 4,
+                        desktop: 4,
+                        tablet: 6
+                      }}
+                      key={node.fields.slug}
+                    >
+                      <Animated className="animated-card">
+                        <Link to={node.fields.slug}>
+                          <Card className="is-post">
+                            {node.frontmatter.cover && (
+                              <CardImage>
+                                <LazyImage
+                                  fluid={
+                                    node.frontmatter.cover.childImageSharp.fluid
+                                  }
+                                  alt={title}
+                                  className="image"
+                                />
+                              </CardImage>
+                            )}
+                            <CardContent>
+                              <Title>{title}</Title>
+                              <Subtitle>
+                                <small>
+                                  {`${node.frontmatter.date} – ${
+                                    node.timeToRead
+                                  } min`}
+                                </small>
+                              </Subtitle>
+                              <Content
+                                dangerouslySetInnerHTML={{
+                                  __html:
+                                    node.frontmatter.description || node.excerpt
+                                }}
                               />
-                            </CardImage>
-                          )}
-                          <CardContent>
-                            <Title>{title}</Title>
-                            <Subtitle>
-                              <small>
-                                {`${node.frontmatter.date} – ${
-                                  node.timeToRead
-                                } min`}
-                              </small>
-                            </Subtitle>
-                            <Content
-                              dangerouslySetInnerHTML={{
-                                __html:
-                                  node.frontmatter.description || node.excerpt
-                              }}
-                            />
-                          </CardContent>
-                        </Card>
-                      </Link>
-                    </Animated>
-                  </Column>
-                );
-              })}
-            </Columns>
+                            </CardContent>
+                          </Card>
+                        </Link>
+                      </Animated>
+                    </Column>
+                  );
+                })}
+              </Columns>
+            </Fade>
           </Container>
         </HeroBody>
       </Hero>
