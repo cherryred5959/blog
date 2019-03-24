@@ -20,7 +20,9 @@ const Animated = props => {
   };
 
   const trans = (x, y, s) =>
-    `perspective(1200px) rotateX(${x}deg) rotateY(${y}deg) scale(${s})`;
+    `perspective(${
+      props.perspective
+    }) rotateX(${x}deg) rotateY(${y}deg) scale(${s})`;
 
   const _updateSpring = (x, y, element) =>
     setSpring({ xys: calc(x, y, element) });
@@ -47,11 +49,13 @@ const Animated = props => {
 
 Animated.defaultProps = {
   dampingFactor: 20,
+  perspective: '1200px',
   scaleFactor: 1.04
 };
 
 Animated.propTypes = {
   dampingFactor: PropTypes.number,
+  perspective: PropTypes.string,
   scaleFactor: PropTypes.number
 };
 
