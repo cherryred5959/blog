@@ -44,7 +44,7 @@ const Header = props => {
               <NavbarItem>
                 <Button
                   isColor="dark"
-                  href={`https://facebook.com/${
+                  href={`https://github.com/${
                     data.site.siteMetadata.social.github
                   }`}
                   target="_blank"
