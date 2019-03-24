@@ -15,6 +15,7 @@ import {
   Subtitle
 } from 'bloomer';
 import Typist from 'react-typist';
+import { useSpring, animated } from 'react-spring';
 
 import Layout from '../components/layout';
 import SEO from '../components/seo';
@@ -25,21 +26,28 @@ const BlogIndex = props => {
   const { title: siteTitle, siteDomain, keywords } = data.site.siteMetadata;
   const posts = data.allMarkdownRemark.edges;
 
+  const animProps = useSpring({
+    from: { marginLeft: '-100vw' },
+    to: { marginLeft: '0vw' }
+  });
+
   return (
     <Layout location={location}>
       <SEO title={siteTitle} keywords={keywords || []} />
       <Hero isColor="dark" className="is-fullheight-with-navbar">
         <HeroBody>
           <Container>
-            <Title>{siteDomain}</Title>
-            <Subtitle>
-              <Typist startDelay={1000}>
-                A blog about web technologies and other stuff{' '}
-                <span role="img" aria-label="jsx-a11y/accessible-emoji">
-                  💻
-                </span>
-              </Typist>
-            </Subtitle>
+            <animated.div style={animProps}>
+              <Title>{siteDomain}</Title>
+              <Subtitle>
+                <Typist startDelay={1000}>
+                  A blog about web technologies and other stuff{' '}
+                  <span role="img" aria-label="jsx-a11y/accessible-emoji">
+                    💻
+                  </span>
+                </Typist>
+              </Subtitle>
+            </animated.div>
           </Container>
         </HeroBody>
       </Hero>
