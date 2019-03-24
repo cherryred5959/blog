@@ -34,23 +34,24 @@ const Header = props => {
             <NavbarBurger isActive={isActive} onClick={toggleIsActive} />
           </NavbarBrand>
           <NavbarMenu isActive={isActive} onClick={toggleIsActive}>
-            <NavbarStart>
-              {/*<Link to={`/about`} className="navbar-item">
-                About Me
-      </Link>*/}
-            </NavbarStart>
+            <NavbarStart>{/* Put left-side menu items here */}</NavbarStart>
             <NavbarEnd>
+              {process.env.NODE_ENV === 'development' && (
+                <Link to={`/about`} className="navbar-item">
+                  About
+                </Link>
+              )}
               <NavbarItem>
                 <Button
-                  isInverted
-                  isColor="warning"
-                  type="application/rss+xml"
-                  href="/rss.xml"
+                  isColor="dark"
+                  href={`https://facebook.com/${
+                    data.site.siteMetadata.social.github
+                  }`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  title="RSS Feed"
+                  title="GitHub"
                 >
-                  <Icon className="fas fa-rss fa-lg" />
+                  <Icon className="fab fa-github fa-lg" />
                 </Button>
               </NavbarItem>
             </NavbarEnd>
@@ -67,6 +68,9 @@ const headerQuery = graphql`
       siteMetadata {
         title
         siteDomain
+        social {
+          github
+        }
       }
     }
   }

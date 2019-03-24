@@ -12,7 +12,8 @@ module.exports = {
       instagram: `dennismrl`,
       facebook: `dennismorello`,
       linkedin: `dennismorello`,
-      twitter: `dennismorello`
+      twitter: `dennismorello`,
+      github: `dennismorello`
     },
     keywords: [
       `dennis`,

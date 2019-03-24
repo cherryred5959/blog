@@ -110,6 +110,19 @@ const Footer = props => {
                         <Icon className="fab fa-linkedin fa-lg" />
                       </Button>
                     </Column>
+                    <Column>
+                      <Button
+                        isInverted
+                        isColor="primary"
+                        type="application/rss+xml"
+                        href="/rss.xml"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        title="RSS Feed"
+                      >
+                        <Icon className="fas fa-rss fa-lg" />
+                      </Button>
+                    </Column>
                   </Columns>
                 </LevelItem>
               </LevelRight>
