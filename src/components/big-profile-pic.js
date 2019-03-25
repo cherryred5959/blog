@@ -11,6 +11,7 @@ const BigProfilePic = props => {
         const profilePic = data.file.childImageSharp;
         return (
           <LazyImage
+            className={props.className}
             fluid={profilePic.fluid}
             alt={author}
             imgStyle={{
@@ -22,8 +23,8 @@ const BigProfilePic = props => {
               maxHeight:
                 profilePic.fluid.presentationWidth /
                 profilePic.fluid.aspectRatio,
-              margin: `auto 0 auto auto`,
-              overflow: `visible`
+              overflow: `visible`,
+              ...props.style
             }}
           />
         );

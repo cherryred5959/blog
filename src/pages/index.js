@@ -33,15 +33,17 @@ const BlogIndex = props => {
         <HeroBody>
           <Container>
             <Fade left>
-              <Title>{siteDomain}</Title>
-              <Subtitle>
-                <Typist startDelay={1000}>
-                  A blog about web technologies and other stuff{' '}
-                  <span role="img" aria-label="jsx-a11y/accessible-emoji">
-                    💻
-                  </span>
-                </Typist>
-              </Subtitle>
+              <React.Fragment>
+                <Title>{siteDomain}</Title>
+                <Subtitle>
+                  <Typist startDelay={1000}>
+                    A blog about web technologies and other stuff{' '}
+                    <span role="img" aria-label="jsx-a11y/accessible-emoji">
+                      💻
+                    </span>
+                  </Typist>
+                </Subtitle>
+              </React.Fragment>
             </Fade>
           </Container>
         </HeroBody>

@@ -36,11 +36,9 @@ const Header = props => {
           <NavbarMenu isActive={isActive} onClick={toggleIsActive}>
             <NavbarStart>{/* Put left-side menu items here */}</NavbarStart>
             <NavbarEnd>
-              {process.env.NODE_ENV === 'development' && (
-                <Link to={`/about`} className="navbar-item">
-                  About
-                </Link>
-              )}
+              <Link to={`/about`} className="navbar-item">
+                About
+              </Link>
               <NavbarItem>
                 <Button
                   isColor="dark"

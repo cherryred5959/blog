@@ -1,12 +1,17 @@
 import React from 'react';
 import { graphql } from 'gatsby';
 import {
+  Button,
   Columns,
   Column,
   Container,
   Content,
   Hero,
   HeroBody,
+  Level,
+  LevelItem,
+  LevelLeft,
+  LevelRight,
   Title,
   Subtitle
 } from 'bloomer';
@@ -27,50 +32,113 @@ const About = props => {
       <Hero isColor="dark" className="is-fullheight-with-navbar">
         <HeroBody>
           <Container>
-            <Columns>
-              <Column style={{ margin: `auto 0` }}>
-                <Fade left>
-                  <div>
-                    <Title>{siteTitle}</Title>
-                    <Subtitle>
-                      <Typist startDelay={1000}>
-                        A front-end engineer from Milan{' '}
-                        <span role="img" aria-label="jsx-a11y/accessible-emoji">
-                          🇮🇹
-                        </span>
-                      </Typist>
-                    </Subtitle>
-                  </div>
-                </Fade>
-              </Column>
-              <Column style={{ margin: `auto 0` }} isHidden="mobile">
-                <Fade right>
-                  <BigProfilePic />
-                </Fade>
-              </Column>
-            </Columns>
+            <Fade left>
+              <React.Fragment>
+                <Title>{siteTitle}</Title>
+                <Subtitle>
+                  <Typist startDelay={1000}>
+                    A front-end engineer from Milan{' '}
+                    <span role="img" aria-label="jsx-a11y/accessible-emoji">
+                      🇮🇹
+                    </span>
+                  </Typist>
+                </Subtitle>
+              </React.Fragment>
+            </Fade>
           </Container>
         </HeroBody>
       </Hero>
       <Hero isFullHeight>
         <HeroBody>
           <Container>
-            <Fade left>
-              <React.Fragment>
-                <Title>
-                  <span role="img" aria-label="jsx-a11y/accessible-emoji">
-                    👋🏻
-                  </span>
-                </Title>
-                <Content>
-                  <p>
-                    I am an Italian front-end engineer. Geek by nature, I have
-                    always been interested in technology, music and photography.
-                  </p>
-                  <p>Bla bla bla...</p>
-                </Content>
-              </React.Fragment>
-            </Fade>
+            <Columns isVCentered>
+              <Column>
+                <Fade left>
+                  <React.Fragment>
+                    <Title>
+                      <span role="img" aria-label="jsx-a11y/accessible-emoji">
+                        👋🏻
+                      </span>
+                    </Title>
+                    <Content>
+                      <p>
+                        I am a front-end engineer based in Milan. I love writing
+                        code, learning new things and exploring the world around
+                        me.
+                      </p>
+                      <p>
+                        This website has been designed and written by me using{' '}
+                        <a
+                          href="https://reactjs.org"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          title="React"
+                        >
+                          React
+                        </a>{' '}
+                        as the UI library,{' '}
+                        <a
+                          href="https://gatsbyjs.org"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          title="Gatsby"
+                        >
+                          Gatsby
+                        </a>{' '}
+                        as the static site generator and{' '}
+                        <a
+                          href="https://bulma.io"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          title="Bulma"
+                        >
+                          Bulma
+                        </a>{' '}
+                        as the CSS library.
+                      </p>
+                      <hr />
+                      <p>
+                        Have a look at my resume (<i>coming soon</i>) or contact
+                        me!
+                      </p>
+                    </Content>
+                    <Level isMobile>
+                      <LevelItem>
+                        <Button disabled>Resume</Button>
+                      </LevelItem>
+                      <LevelItem>
+                        <Button
+                          isColor="info"
+                          href="https://t.me/dennismrl"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          title="Telegram"
+                        >
+                          Telegram
+                        </Button>
+                      </LevelItem>
+                      <LevelItem>
+                        <Button
+                          isColor="dark"
+                          href="mailto:dennis@morello.dev"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          title="E-mail"
+                        >
+                          E-mail
+                        </Button>
+                      </LevelItem>
+                    </Level>
+                  </React.Fragment>
+                </Fade>
+              </Column>
+              <Column>
+                <Fade right>
+                  <BigProfilePic className="is-hidden-mobile" style={{ margin: 'auto 0 auto auto' }} />
+                  <BigProfilePic className="is-hidden-tablet" style={{ margin: '2rem auto 0 auto' }} />
+                </Fade>
+              </Column>
+            </Columns>
           </Container>
         </HeroBody>
       </Hero>
