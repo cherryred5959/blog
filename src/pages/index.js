@@ -11,13 +11,11 @@ import {
   Content,
   Hero,
   HeroBody,
-  HeroFooter,
   Title,
   Subtitle
 } from 'bloomer';
 import Typist from 'react-typist';
 import Fade from 'react-reveal/Fade';
-import Bounce from 'react-reveal/Bounce';
 
 import Layout from '../components/layout';
 import SEO from '../components/seo';
@@ -47,17 +45,6 @@ const BlogIndex = props => {
             </Fade>
           </Container>
         </HeroBody>
-        <HeroFooter>
-          <Container hasTextAlign="centered">
-            <Bounce bottom delay={500}>
-              <Title style={{ marginBottom: '3rem' }}>
-                <span role="img" aria-label="jsx-a11y/accessible-emoji">
-                  👇🏻
-                </span>
-              </Title>
-            </Bounce>
-          </Container>
-        </HeroFooter>
       </Hero>
       <Hero isFullHeight>
         <HeroBody>
