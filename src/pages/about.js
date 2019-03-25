@@ -27,24 +27,28 @@ const About = props => {
       <Hero isColor="dark" className="is-fullheight-with-navbar">
         <HeroBody>
           <Container>
-            <Fade left>
-              <Columns>
-                <Column style={{ margin: `auto 0` }}>
-                  <Title>{siteTitle}</Title>
-                  <Subtitle>
-                    <Typist startDelay={1000}>
-                      A front-end engineer from Milan{' '}
-                      <span role="img" aria-label="jsx-a11y/accessible-emoji">
-                        🇮🇹
-                      </span>
-                    </Typist>
-                  </Subtitle>
-                </Column>
-                <Column style={{ margin: `auto 0` }} isHidden="mobile">
+            <Columns>
+              <Column style={{ margin: `auto 0` }}>
+                <Fade left>
+                  <div>
+                    <Title>{siteTitle}</Title>
+                    <Subtitle>
+                      <Typist startDelay={1000}>
+                        A front-end engineer from Milan{' '}
+                        <span role="img" aria-label="jsx-a11y/accessible-emoji">
+                          🇮🇹
+                        </span>
+                      </Typist>
+                    </Subtitle>
+                  </div>
+                </Fade>
+              </Column>
+              <Column style={{ margin: `auto 0` }} isHidden="mobile">
+                <Fade right>
                   <BigProfilePic />
-                </Column>
-              </Columns>
-            </Fade>
+                </Fade>
+              </Column>
+            </Columns>
           </Container>
         </HeroBody>
       </Hero>
