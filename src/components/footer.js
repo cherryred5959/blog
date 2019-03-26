@@ -37,7 +37,7 @@ const Footer = props => {
                     <MediaContent>
                       <p>
                         <strong>
-                          <Link to={`/`}>
+                          <Link to={`/`} className="has-text-grey-dark">
                             {data.site.siteMetadata.siteDomain}
                           </Link>
                         </strong>

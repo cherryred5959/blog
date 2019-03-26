@@ -25,7 +25,7 @@ const Header = props => {
       render={data => (
         <Navbar className="has-shadow">
           <NavbarBrand>
-            <Link to={`/`} className="navbar-item">
+            <Link to={`/`} className="navbar-item has-text-grey-dark">
               <img src={codeLogo} alt={data.site.siteMetadata.title} />
               <b style={{ marginLeft: '0.5rem' }}>
                 {data.site.siteMetadata.siteDomain}
@@ -36,7 +36,7 @@ const Header = props => {
           <NavbarMenu isActive={isActive} onClick={toggleIsActive}>
             <NavbarStart>{/* Put left-side menu items here */}</NavbarStart>
             <NavbarEnd>
-              <Link to={`/about`} className="navbar-item">
+              <Link to={`/about`} className="navbar-item has-text-grey-dark">
                 About
               </Link>
               <NavbarItem>
