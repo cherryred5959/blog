@@ -10,8 +10,6 @@ import {
   HeroBody,
   Level,
   LevelItem,
-  LevelLeft,
-  LevelRight,
   Title,
   Subtitle
 } from 'bloomer';
