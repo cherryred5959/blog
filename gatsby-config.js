@@ -195,6 +195,17 @@ module.exports = {
         crossOrigin: `use-credentials`
       }
     },
+    {
+      resolve: `gatsby-plugin-guess-js`,
+      options: {
+        GAViewID: process.env.GA_VIEW_ID,
+        minimumThreshold: 0.03,
+        period: {
+          startDate: new Date('2019-3-1'),
+          endDate: new Date()
+        }
+      }
+    },
     `gatsby-plugin-offline`,
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-catch-links`
