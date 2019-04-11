@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link, StaticQuery, graphql } from 'gatsby';
 import LazyImage from 'gatsby-image';
 import {
@@ -17,12 +17,17 @@ import {
   MediaLeft
 } from 'bloomer';
 
+// Theme
+import { ThemeContext, getOppositeTheme } from '../contexts/theme';
+
 const Footer = props => {
+  const { theme } = useContext(ThemeContext);
+
   return (
     <StaticQuery
       query={footerQuery}
       render={data => (
-        <BloomerFooter>
+        <BloomerFooter className={`is-${theme}`}>
           <Container>
             <Level className="has-text-centered-mobile">
               <LevelLeft>
@@ -37,7 +42,10 @@ const Footer = props => {
                     <MediaContent>
                       <p>
                         <strong>
-                          <Link to={`/`} className="has-text-grey-dark">
+                          <Link
+                            to={`/`}
+                            className={`has-text-${getOppositeTheme(theme)}`}
+                          >
                             {data.site.siteMetadata.siteDomain}
                           </Link>
                         </strong>
@@ -53,7 +61,7 @@ const Footer = props => {
                   <Columns isMobile>
                     <Column>
                       <Button
-                        isInverted
+                        isInverted={theme === 'light'}
                         isColor="danger"
                         href={`https://instagram.com/${
                           data.site.siteMetadata.social.instagram
@@ -70,7 +78,7 @@ const Footer = props => {
                     </Column>
                     <Column>
                       <Button
-                        isInverted
+                        isInverted={theme === 'light'}
                         isColor="link"
                         href={`https://facebook.com/${
                           data.site.siteMetadata.social.facebook
@@ -84,7 +92,7 @@ const Footer = props => {
                     </Column>
                     <Column>
                       <Button
-                        isInverted
+                        isInverted={theme === 'light'}
                         isColor="info"
                         href={`https://twitter.com/${
                           data.site.siteMetadata.social.twitter
@@ -98,7 +106,7 @@ const Footer = props => {
                     </Column>
                     <Column>
                       <Button
-                        isInverted
+                        isInverted={theme === 'light'}
                         isColor="info"
                         href={`https://linkedin.com/in/${
                           data.site.siteMetadata.social.linkedin
@@ -112,7 +120,7 @@ const Footer = props => {
                     </Column>
                     <Column>
                       <Button
-                        isInverted
+                        isInverted={theme === 'light'}
                         isColor="primary"
                         type="application/rss+xml"
                         href="/rss.xml"

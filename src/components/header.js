@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { Link, StaticQuery, graphql } from 'gatsby';
 import {
   Button,
@@ -12,20 +12,26 @@ import {
   NavbarStart
 } from 'bloomer';
 
-import codeLogo from '../../content/assets/code-logo-64.png';
+import codeLogo from '../../content/assets/logo-64.png';
+
+// Theme
+import { ThemeContext, getOppositeTheme } from '../contexts/theme';
 
 const Header = props => {
   const [isActive, setIsActive] = useState(false);
+  const { theme, setTheme } = useContext(ThemeContext);
 
   const toggleIsActive = () => setIsActive(!isActive);
+
+  const toggleTheme = () => setTheme(getOppositeTheme(theme));
 
   return (
     <StaticQuery
       query={headerQuery}
       render={data => (
-        <Navbar className="has-shadow">
+        <Navbar className={`is-${theme}`}>
           <NavbarBrand>
-            <Link to={`/`} className="navbar-item has-text-grey-dark">
+            <Link to={`/`} className="navbar-item">
               <img src={codeLogo} alt={data.site.siteMetadata.title} />
               <b style={{ marginLeft: '0.5rem' }}>
                 {data.site.siteMetadata.siteDomain}
@@ -33,23 +39,26 @@ const Header = props => {
             </Link>
             <NavbarBurger isActive={isActive} onClick={toggleIsActive} />
           </NavbarBrand>
-          <NavbarMenu isActive={isActive} onClick={toggleIsActive}>
+          <NavbarMenu
+            isActive={isActive}
+            onClick={toggleIsActive}
+            className={`has-background-${theme}`}
+          >
             <NavbarStart>{/* Put left-side menu items here */}</NavbarStart>
             <NavbarEnd>
-              <Link to={`/about`} className="navbar-item has-text-grey-dark">
+              <Link
+                to={`/about`}
+                className={`navbar-item has-text-${getOppositeTheme(theme)}`}
+              >
                 About
               </Link>
               <NavbarItem>
-                <Button
-                  isColor="dark"
-                  href={`https://github.com/${
-                    data.site.siteMetadata.social.github
-                  }`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  title="GitHub"
-                >
-                  <Icon className="fab fa-github fa-lg" />
+                <Button isColor={theme} onClick={toggleTheme}>
+                  <Icon
+                    className={`fas fa-${
+                      theme === 'light' ? 'moon' : 'sun'
+                    } fa-lg`}
+                  />
                 </Button>
               </NavbarItem>
             </NavbarEnd>

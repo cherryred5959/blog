@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link, graphql } from 'gatsby';
 import LazyImage from 'gatsby-image';
 import {
@@ -17,11 +17,17 @@ import {
 import Typist from 'react-typist';
 import Fade from 'react-reveal/Fade';
 
+// Components
 import Layout from '../components/layout';
 import SEO from '../components/seo';
 import Animated from '../components/animated';
 
+// Theme
+import { ThemeContext, getOppositeTheme } from '../contexts/theme';
+
 const BlogIndex = props => {
+  const { theme } = useContext(ThemeContext);
+
   const { data, location } = props;
   const { title: siteTitle, siteDomain, keywords } = data.site.siteMetadata;
   const posts = data.allMarkdownRemark.edges;
@@ -29,7 +35,7 @@ const BlogIndex = props => {
   return (
     <Layout location={location}>
       <SEO title={siteTitle} keywords={keywords || []} />
-      <Hero isColor="dark" className="is-fullheight-with-navbar">
+      <Hero isColor={theme} className="is-fullheight-with-navbar">
         <HeroBody>
           <Container>
             <Fade left>
@@ -48,7 +54,7 @@ const BlogIndex = props => {
           </Container>
         </HeroBody>
       </Hero>
-      <Hero isFullHeight>
+      <Hero isFullHeight isColor={theme}>
         <HeroBody>
           <Container>
             <Fade left>
@@ -66,7 +72,10 @@ const BlogIndex = props => {
                     >
                       <Animated className="animated-card">
                         <Link to={node.fields.slug}>
-                          <Card className="is-post">
+                          <Card
+                            className={`is-post has-background-${theme}`}
+                            hasTextColor={theme}
+                          >
                             {node.frontmatter.cover && (
                               <CardImage>
                                 <LazyImage
@@ -88,6 +97,7 @@ const BlogIndex = props => {
                                 </small>
                               </Subtitle>
                               <Content
+                                hasTextColor={getOppositeTheme(theme)}
                                 dangerouslySetInnerHTML={{
                                   __html:
                                     node.frontmatter.description || node.excerpt

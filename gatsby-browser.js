@@ -1,3 +1,8 @@
+import React from 'react';
+
+// Hooks
+import { useLocalStorage } from './src/hooks/local-storage';
+
 // Font Awesome
 import '@fortawesome/fontawesome-free/css/all.min.css';
 
@@ -8,7 +13,10 @@ import './src/styles/index.scss';
 import 'react-typist/dist/Typist.css';
 
 // Prism.js Theme
-import 'prism-themes/themes/prism-ghcolors.css';
+import 'prismjs/themes/prism-okaidia.css';
+
+// Contexts
+import { ThemeContext } from './src/contexts/theme';
 
 // Load Fonts
 import WebFont from 'webfontloader';
@@ -18,3 +26,22 @@ WebFont.load({
     families: ['Quicksand:400,700']
   }
 });
+
+const App = ({ children }) => {
+  const [theme, setTheme] = useLocalStorage('theme', 'light');
+
+  return (
+    <ThemeContext.Provider
+      value={{
+        theme,
+        setTheme
+      }}
+    >
+      {children}
+    </ThemeContext.Provider>
+  );
+};
+
+export const wrapRootElement = ({ element }) => {
+  return <App>{element}</App>;
+};

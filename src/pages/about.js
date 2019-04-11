@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { graphql } from 'gatsby';
 import {
   Button,
@@ -16,18 +16,24 @@ import {
 import Typist from 'react-typist';
 import Fade from 'react-reveal/Fade';
 
+// Components
 import Layout from '../components/layout';
 import SEO from '../components/seo';
 import BigProfilePic from '../components/big-profile-pic';
 
+// Theme
+import { ThemeContext, getOppositeTheme } from '../contexts/theme';
+
 const About = props => {
+  const { theme } = useContext(ThemeContext);
+
   const { data, location } = props;
   const { title: siteTitle, keywords } = data.site.siteMetadata;
 
   return (
     <Layout location={location}>
       <SEO title="About" keywords={keywords || []} />
-      <Hero isColor="dark" className="is-fullheight-with-navbar">
+      <Hero isColor={theme} className="is-fullheight-with-navbar">
         <HeroBody>
           <Container>
             <Fade left>
@@ -46,7 +52,7 @@ const About = props => {
           </Container>
         </HeroBody>
       </Hero>
-      <Hero isFullHeight>
+      <Hero isFullHeight isColor={theme}>
         <HeroBody>
           <Container>
             <Columns isVCentered>
@@ -117,7 +123,7 @@ const About = props => {
                       </LevelItem>
                       <LevelItem>
                         <Button
-                          isColor="dark"
+                          isColor={getOppositeTheme(theme)}
                           href="mailto:dennis@morello.dev"
                           target="_blank"
                           rel="noopener noreferrer"
@@ -132,8 +138,14 @@ const About = props => {
               </Column>
               <Column>
                 <Fade right>
-                  <BigProfilePic className="is-hidden-mobile" style={{ margin: 'auto 0 auto auto' }} />
-                  <BigProfilePic className="is-hidden-tablet" style={{ margin: '2rem auto 0 auto' }} />
+                  <BigProfilePic
+                    className="is-hidden-mobile"
+                    style={{ margin: 'auto 0 auto auto' }}
+                  />
+                  <BigProfilePic
+                    className="is-hidden-tablet"
+                    style={{ margin: '2rem auto 0 auto' }}
+                  />
                 </Fade>
               </Column>
             </Columns>

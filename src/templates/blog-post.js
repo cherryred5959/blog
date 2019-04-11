@@ -1,14 +1,20 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link, graphql } from 'gatsby';
 import LazyImage from 'gatsby-image';
 import { Container, Content, Section, Subtitle, Title } from 'bloomer';
 import { DiscussionEmbed } from 'disqus-react';
 
+// Components
 import Layout from '../components/layout';
 import SEO from '../components/seo';
 import ReadingProgress from '../components/reading-progress';
 
+// Theme
+import { ThemeContext, getOppositeTheme } from '../contexts/theme';
+
 const BlogPostTemplate = props => {
+  const { theme } = useContext(ThemeContext);
+
   const post = props.data.markdownRemark;
   const cover = post.frontmatter.cover;
   const {
@@ -61,10 +67,12 @@ const BlogPostTemplate = props => {
         keywords={siteKeywords}
       />
       <ReadingProgress />
-      <Section>
+      <Section className={`has-background-${theme}`}>
         <Container>
-          <Title>{post.frontmatter.title}</Title>
-          <Subtitle>
+          <Title hasTextColor={getOppositeTheme(theme)}>
+            {post.frontmatter.title}
+          </Title>
+          <Subtitle hasTextColor={getOppositeTheme(theme)}>
             <small>{`${post.frontmatter.date} – ${post.timeToRead} min`}</small>
           </Subtitle>
         </Container>
@@ -85,7 +93,10 @@ const BlogPostTemplate = props => {
           </div>
         )}
         <Container>
-          <Content dangerouslySetInnerHTML={{ __html: post.html }} />
+          <Content
+            hasTextColor={getOppositeTheme(theme)}
+            dangerouslySetInnerHTML={{ __html: post.html }}
+          />
 
           <hr />
 

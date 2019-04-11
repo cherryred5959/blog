@@ -190,7 +190,7 @@ module.exports = {
         background_color: `#ffffff`,
         theme_color: `#363636`,
         display: `minimal-ui`,
-        icon: `content/assets/code-logo-1024.png`,
+        icon: `content/assets/logo-1024.png`,
         include_favicon: true,
         crossOrigin: `use-credentials`
       }

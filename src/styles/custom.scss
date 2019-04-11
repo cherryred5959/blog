@@ -1,4 +1,65 @@
+* {
+  transition: background-color 0.2s;
+}
+
+footer.is-dark {
+  background-color: #363636 !important;
+  color: whitesmoke;
+}
+
+.section {
+  &.has-background-light {
+    hr {
+      background-color: #e7e9ee;
+    }
+  }
+
+  &.has-background-dark {
+    a:hover {
+      color: #dbdbdb !important;
+    }
+    code {
+      background-color: #272822;
+    }
+    blockquote {
+      background-color: #363636 !important;
+    }
+  }
+}
+
 .content {
+  &.has-text-light {
+    a,
+    p,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    strong {
+      color: whitesmoke !important;
+    }
+  }
+
+  &.has-text-dark {
+    a,
+    p,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    strong {
+      color: #363636 !important;
+    }
+  }
+
+  a {
+    text-decoration: underline;
+  }
+
   .tag,
   .number {
     display: inline;
