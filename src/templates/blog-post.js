@@ -66,7 +66,7 @@ const BlogPostTemplate = props => {
         meta={articleMeta}
         keywords={siteKeywords}
       />
-      <ReadingProgress />
+      <ReadingProgress color={theme === 'light' ? 'info' : 'danger'} />
       <Section className={`has-background-${theme}`}>
         <Container>
           <Title hasTextColor={getOppositeTheme(theme)}>
