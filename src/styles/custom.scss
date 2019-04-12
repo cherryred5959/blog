@@ -12,11 +12,21 @@ footer.is-dark {
     hr {
       background-color: #e7e9ee;
     }
+    p > code {
+      background-color: white;
+    }
   }
 
   &.has-background-dark {
-    a:hover {
-      color: #dbdbdb !important;
+    a {
+      &:hover {
+        color: #dbdbdb;
+      }
+      color: whitesmoke;
+      text-decoration: underline;
+    }
+    hr {
+      background-color: rgba(255, 255, 255, 0.08);
     }
     code {
       background-color: #272822;
@@ -54,6 +64,10 @@ footer.is-dark {
     strong {
       color: #363636 !important;
     }
+  }
+
+  code {
+    border-radius: 4px;
   }
 
   a {
