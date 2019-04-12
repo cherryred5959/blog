@@ -6,6 +6,10 @@ html {
   background-color: #363636;
 }
 
+progress[value]::-webkit-progress-bar {
+  background-color: transparent;
+}
+
 footer.is-dark {
   background-color: #363636 !important;
   color: whitesmoke;

@@ -56,12 +56,11 @@ const Header = props => {
                 <Button
                   isColor={theme}
                   onClick={toggleTheme}
-                  title={`${theme === 'light' ? 'Dark' : 'Light'} Theme`}
+                  title="Toggle Dark Theme"
                 >
                   <Icon
-                    className={`fas fa-${
-                      theme === 'light' ? 'moon' : 'sun'
-                    } fa-lg`}
+                    className="fas fa-moon"
+                    hasTextColor={theme === 'light' ? 'dark' : 'warning'}
                   />
                 </Button>
               </NavbarItem>
