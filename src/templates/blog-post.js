@@ -73,7 +73,7 @@ const BlogPostTemplate = props => {
             {post.frontmatter.title}
           </Title>
           <Subtitle hasTextColor={getOppositeTheme(theme)}>
-            <small>{`${post.frontmatter.date} – ${post.timeToRead} min`}</small>
+            <small>{`${post.frontmatter.date} — ${post.timeToRead} min`}</small>
           </Subtitle>
         </Container>
         {cover && (

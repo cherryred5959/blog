@@ -1,6 +1,6 @@
 ---
 title: Conditional Rendering In React
-date: '2019-03-11T18:00:00.000Z'
+date: '2019-03-11'
 description: A component composition-based approach to conditional rendering.
 tags: ['react', 'jsx', 'hooks', 'conditional rendering', 'component composition']
 cover: './cover.jpg'

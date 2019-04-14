@@ -91,7 +91,7 @@ const BlogIndex = props => {
                               <Title>{title}</Title>
                               <Subtitle>
                                 <small>
-                                  {`${node.frontmatter.date} – ${
+                                  {`${node.frontmatter.date} — ${
                                     node.timeToRead
                                   } min`}
                                 </small>

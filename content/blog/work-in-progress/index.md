@@ -1,6 +1,6 @@
 ---
 title: Work In Progress
-date: '2019-03-01T19:00:00.000Z'
+date: '2019-03-01'
 description: A new exciting blog is rising 🌈
 tags: ['wip']
 cover: './cover.jpg'
