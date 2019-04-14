@@ -81,6 +81,12 @@ module.exports = {
               showLineNumbers: true,
               noInlineHighlight: true
             }
+          },
+          {
+            resolve: `gatsby-remark-katex`,
+            options: {
+              strict: `ignore`
+            }
           }
         ]
       }

@@ -94,6 +94,10 @@ footer.is-dark {
     text-decoration: underline;
   }
 
+  .katex {
+    font: inherit;
+  }
+
   .tag,
   .number {
     display: inline;
