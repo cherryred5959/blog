@@ -57,7 +57,7 @@ const BlogIndex = props => {
       <Hero isFullHeight isColor={theme}>
         <HeroBody>
           <Container>
-            <Fade left>
+            <Fade>
               <Columns isMultiline>
                 {posts.map(({ node }) => {
                   const title = node.frontmatter.title || node.fields.slug;

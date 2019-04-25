@@ -32,8 +32,8 @@ const Footer = props => {
             <Level className="has-text-centered-mobile">
               <LevelLeft>
                 <LevelItem>
-                  <Media>
-                    <MediaLeft>
+                  <Media style={{ alignItems: 'center' }}>
+                    <MediaLeft style={{ height: 64 }}>
                       <LazyImage
                         fixed={data.avatar.childImageSharp.fixed}
                         alt={data.site.siteMetadata.author}
