@@ -77,7 +77,7 @@ const myData = JSON.parse(serializedData);
 
 As we have seen, the LocalStorage API is very simple, but a few non-negligible drawbacks are present:
 
-- Only strings can be saved; to handle with non-string data, we have to manually perform serialization or deserialization
+- Only strings can be saved; to handle with non-string data, we have to manually perform serialization and deserialization
 - `getItem` and `setItem` are synchronous: calling them blocks the main thread, and this potentially prevents the page from being interactive
 
 The only asynchronous alternative to LocalStorage currently available is IndexedDB, which is definitely not known for its ease of use.
@@ -104,7 +104,7 @@ import { storage } from 'std:kv-storage';
 })();
 ```
 
-As we can see, `set` and `get` APIs are the equivalent for LocalStorage's `getItem` and `setItem`, but they are _asynchronous_.
+As we can see, `set` and `get` APIs are the equivalent for LocalStorage's `setItem` and `getItem`, but they are _asynchronous_.
 
 ### Try KV Storage Today
 
