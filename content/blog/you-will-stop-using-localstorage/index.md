@@ -23,15 +23,15 @@ cover: './cover.jpg'
 draft: false
 ---
 
-When [LocalStorage](https://html.spec.whatwg.org/multipage/webstorage.html#the-localstorage-attribute) first appeared as part of HTML5 specification, web developers were excited because it exposed a simple way to save and retrieve data in and from the user's browser. The new API was so simple that a lot of people started using it as a replacement of cookies, even if the purposes of the two technologies are a bit different.
+When [LocalStorage](https://html.spec.whatwg.org/multipage/webstorage.html#the-localstorage-attribute) first appeared as part of HTML5 specification, web developers were excited because it exposed a simple way to save and retrieve data in and from the user's browser.
 
 In this post, we will have a look at a new WICG proposal that aims to be a more performant alternative to LocalStorage.
 
 > This blog post talks about a _potential_ future web platform feature called "KV Storage" (short for "Key-Value Storage"). This is currently a **proposal** made by the Web Incubator Community Group and it should **not** be used in production environments.
 
-## The LocalStorage Specification
+## The LocalStorage Interface
 
-The LocalStorage interface allows the developer to store data in the browser cache in the form of key-value pairs, where both the key and the value are strings. The data is persisted across browser sessions and its scope is delimited by the origin where the script that accesses LocalStorage resides.
+The LocalStorage interface allows the developer to store data in the browser in the form of key-value pairs, where both the key and the value are strings. The data is persisted across browser sessions and its scope is limited to the origin where the script that accesses LocalStorage resides.
 
 ### API
 
@@ -84,7 +84,7 @@ The only asynchronous alternative to LocalStorage currently available is Indexed
 
 ## The KV Storage Proposal
 
-Key-Value Storage is a [proposal](https://wicg.github.io/kv-storage/) made by the Web Incubator Community Group (WICG) that aims to address the drawbacks of LocalStorage we have just analyzed. The specification mandates that it gets implemented by browser vendors as a built-in module and that it uses [IndexedDB](https://www.w3.org/TR/IndexedDB/) as its backing store.
+Key-Value Storage is a [proposal](https://wicg.github.io/kv-storage/) made by the Web Incubator Community Group (WICG) that aims to address the drawbacks of LocalStorage we have just mentioned. The specification mandates that it gets implemented by browser vendors as a built-in module and that it uses [IndexedDB](https://www.w3.org/TR/IndexedDB/) as its backing store.
 
 Let's see an example usage of the KV Storage API, as provided by the specification:
 
@@ -104,7 +104,7 @@ import { storage } from 'std:kv-storage';
 })();
 ```
 
-As we can see, `set` and `get` APIs are the equivalent for LocalStorage's `setItem` and `getItem`, but they are _asynchronous_.
+As we can see, `set` and `get` APIs are the equivalent for LocalStorage's `setItem` and `getItem`, but they are _asynchronous_. This means that the main JS thread is not blocked while the data is being fetched or persisted 😄
 
 ### Try KV Storage Today
 
