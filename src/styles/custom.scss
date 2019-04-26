@@ -112,6 +112,10 @@ footer.is-dark {
     background: inherit;
     margin: inherit;
   }
+
+  pre[class*='language-'] {
+    margin: 0.5em 0 1em 0;
+  }
 }
 
 .animated {
