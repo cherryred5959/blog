@@ -18,15 +18,6 @@ import 'prismjs/themes/prism-okaidia.css';
 // Contexts
 import { ThemeContext } from './src/contexts/theme';
 
-// Load Fonts
-import WebFont from 'webfontloader';
-
-WebFont.load({
-  google: {
-    families: ['Quicksand:400,700']
-  }
-});
-
 const App = ({ children }) => {
   const [theme, setTheme] = useLocalStorage('theme', 'light');
 
