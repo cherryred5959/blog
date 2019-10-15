@@ -28,7 +28,7 @@ const About = props => {
   const { theme } = useContext(ThemeContext);
 
   const { data, location } = props;
-  const { title: siteTitle, keywords } = data.site.siteMetadata;
+  const { title: siteTitle, keywords, email } = data.site.siteMetadata;
 
   return (
     <Layout location={location}>
@@ -124,7 +124,7 @@ const About = props => {
                       <LevelItem>
                         <Button
                           isColor={getOppositeTheme(theme)}
-                          href="mailto:dennis@morello.dev"
+                          href={`mailto:${email}`}
                           target="_blank"
                           rel="noopener noreferrer"
                           title="E-mail"
@@ -165,6 +165,7 @@ export const pageQuery = graphql`
         title
         keywords
         author
+        email
       }
     }
   }

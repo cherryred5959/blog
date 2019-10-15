@@ -2,7 +2,7 @@ module.exports = {
   siteMetadata: {
     title: `Dennis Morello`,
     author: `Dennis Morello`,
-    email: `dennis@morello.dev`,
+    email: `dennismorello@gmail.com`,
     description: `A dev blog by Dennis Morello.`,
     siteUrl: `https://morello.dev`,
     siteDomain: `morello.dev`,
@@ -10,7 +10,6 @@ module.exports = {
     disqusShortname: `morello-dev`,
     social: {
       instagram: `dennismrl`,
-      facebook: `dennismorello`,
       linkedin: `dennismorello`,
       twitter: `dennismorello`,
       github: `dennismorello`
@@ -103,8 +102,41 @@ module.exports = {
     {
       resolve: `gatsby-plugin-feed`,
       options: {
+        query: `
+          {
+            site {
+              siteMetadata {
+                title
+                author
+                email
+                description
+                language
+                siteUrl
+                keywords
+              }
+            }
+          }
+        `,
         feeds: [
           {
+            serialize: ({ query: { site, allMarkdownRemark } }) => {
+              return allMarkdownRemark.edges.map(edge => {
+                return Object.assign({}, edge.node.frontmatter, {
+                  description:
+                    edge.node.frontmatter.description || edge.node.excerpt,
+                  author: site.siteMetadata.author,
+                  categories: Array.from(
+                    new Set([
+                      ...(site.siteMetadata.keywords || []),
+                      ...(edge.node.frontmatter.tags || [])
+                    ])
+                  ),
+                  url: site.siteMetadata.siteUrl + edge.node.fields.slug,
+                  guid: site.siteMetadata.siteUrl + edge.node.fields.slug,
+                  custom_elements: [{ 'content:encoded': edge.node.html }]
+                });
+              });
+            },
             query: `
               {
                 allMarkdownRemark(
@@ -129,72 +161,16 @@ module.exports = {
               }
             `,
             output: '/rss.xml',
-            setup: ({
-              query: {
-                site: { siteMetadata }
-              }
-            }) => {
-              return {
-                title: siteMetadata.title,
-                description: siteMetadata.description,
-                language: siteMetadata.language,
-                categories: siteMetadata.keywords,
-                feed_url: siteMetadata.siteUrl + `/rss.xml`,
-                site_url: siteMetadata.siteUrl,
-                image_url: siteMetadata.siteUrl + `/icons/icon-144x144.png`,
-                managingEditor: `${siteMetadata.email} (${
-                  siteMetadata.author
-                })`,
-                webMaster: `${siteMetadata.email} (${siteMetadata.author})`,
-                generator: `GatsbyJS`
-              };
-            },
-            serialize: ({ query: { site, allMarkdownRemark } }) => {
-              return allMarkdownRemark.edges.map(edge => {
-                return Object.assign({}, edge.node.frontmatter, {
-                  description:
-                    edge.node.frontmatter.description || edge.node.excerpt,
-                  author: site.siteMetadata.author,
-                  categories: Array.from(
-                    new Set([
-                      ...(site.siteMetadata.keywords || []),
-                      ...(edge.node.frontmatter.tags || [])
-                    ])
-                  ),
-                  url: site.siteMetadata.siteUrl + edge.node.fields.slug,
-                  guid: site.siteMetadata.siteUrl + edge.node.fields.slug,
-                  custom_elements: [{ 'content:encoded': edge.node.html }]
-                });
-              });
-            }
+            title: 'Dennis Morello'
           }
-        ],
-        query: `
-          {
-            site {
-              siteMetadata {
-                title
-                author
-                email
-                description
-                language
-                siteUrl
-                keywords
-              }
-            }
-          }
-        `
+        ]
       }
     },
     {
-      resolve: `gatsby-plugin-prefetch-google-fonts`,
+      resolve: `gatsby-plugin-google-fonts`,
       options: {
-        fonts: [
-          {
-            family: `Quicksand`,
-            variants: [`300`, `400`, `500`, `700`]
-          }
-        ]
+        fonts: [`Quicksand:300,400,500,700`],
+        display: `swap`
       }
     },
     `gatsby-plugin-sitemap`,

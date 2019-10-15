@@ -62,6 +62,20 @@ const Footer = props => {
                     <Column>
                       <Button
                         isInverted={theme === 'light'}
+                        isColor="info"
+                        href={`https://twitter.com/${
+                          data.site.siteMetadata.social.twitter
+                        }`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        title="Twitter"
+                      >
+                        <Icon className="fab fa-twitter fa-lg" />
+                      </Button>
+                    </Column>
+                    <Column>
+                      <Button
+                        isInverted={theme === 'light'}
                         isColor="danger"
                         href={`https://instagram.com/${
                           data.site.siteMetadata.social.instagram
@@ -74,34 +88,6 @@ const Footer = props => {
                           className="fab fa-instagram fa-lg"
                           alt="Instagram"
                         />
-                      </Button>
-                    </Column>
-                    <Column>
-                      <Button
-                        isInverted={theme === 'light'}
-                        isColor="link"
-                        href={`https://facebook.com/${
-                          data.site.siteMetadata.social.facebook
-                        }`}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        title="Facebook"
-                      >
-                        <Icon className="fab fa-facebook fa-lg" />
-                      </Button>
-                    </Column>
-                    <Column>
-                      <Button
-                        isInverted={theme === 'light'}
-                        isColor="info"
-                        href={`https://twitter.com/${
-                          data.site.siteMetadata.social.twitter
-                        }`}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        title="Twitter"
-                      >
-                        <Icon className="fab fa-twitter fa-lg" />
                       </Button>
                     </Column>
                     <Column>
@@ -171,7 +157,6 @@ const footerQuery = graphql`
         description
         social {
           instagram
-          facebook
           linkedin
           twitter
         }
