@@ -90,6 +90,17 @@ module.exports = {
       }
     },
     {
+      resolve: `gatsby-plugin-google-analytics`,
+      options: {
+        trackingId: process.env.GA_ID,
+        head: true,
+        anonymize: true,
+        respectDNT: true,
+        exclude: [],
+        pageTransitionDelay: 0
+      }
+    },
+    {
       resolve: `gatsby-plugin-feed`,
       options: {
         query: `
