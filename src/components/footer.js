@@ -61,16 +61,19 @@ const Footer = props => {
                   <Columns isMobile>
                     <Column>
                       <Button
-                        isInverted={theme === 'light'}
-                        isColor="info"
-                        href={`https://twitter.com/${
-                          data.site.siteMetadata.social.twitter
-                        }`}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        title="Twitter"
+                          isInverted={theme === 'light'}
+                          isColor="white"
+                          href={`mailto:${
+                              data.site.siteMetadata.email
+                          }`}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          title="Email"
                       >
-                        <Icon className="fab fa-twitter fa-lg" />
+                        <Icon
+                            className="fas fa-envelope fa-lg"
+                            alt="Email"
+                        />
                       </Button>
                     </Column>
                     <Column>
@@ -94,14 +97,14 @@ const Footer = props => {
                       <Button
                         isInverted={theme === 'light'}
                         isColor="info"
-                        href={`https://linkedin.com/in/${
-                          data.site.siteMetadata.social.linkedin
+                        href={`https://github.com/${
+                          data.site.siteMetadata.social.github
                         }`}
                         target="_blank"
                         rel="noopener noreferrer"
-                        title="LinkedIn"
+                        title="Github"
                       >
-                        <Icon className="fab fa-linkedin fa-lg" />
+                        <Icon className="fab fa-github fa-lg" />
                       </Button>
                     </Column>
                     <Column>
@@ -120,18 +123,6 @@ const Footer = props => {
                   </Columns>
                 </LevelItem>
               </LevelRight>
-            </Level>
-            <Level>
-              <LevelItem hasTextAlign="centered">
-                <Button
-                  href="https://ko-fi.com/O4O2RDTK"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  isColor="warning"
-                >
-                  Buy Me a Coffee
-                </Button>
-              </LevelItem>
             </Level>
           </Container>
         </BloomerFooter>
@@ -157,8 +148,7 @@ const footerQuery = graphql`
         description
         social {
           instagram
-          linkedin
-          twitter
+          github
         }
       }
     }

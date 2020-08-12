@@ -1,7 +1,11 @@
+@import '~bulma/sass/utilities/initial-variables';
+
 // Override Bulma variables
-$family-sans-serif: 'Quicksand', sans-serif;
+$family-sans-serif: 'Quicksand', 'Noto Sans KR', sans-serif;
 $footer-background-color: whitesmoke;
 $body-size: 18px;
+$pagination-current-background-color: $turquoise;
+$pagination-current-border-color: $turquoise;
 
 // Import Bulma
 @import '~bulma/bulma';

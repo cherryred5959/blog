@@ -1,32 +1,22 @@
 module.exports = {
   siteMetadata: {
-    title: `Dennis Morello`,
-    author: `Dennis Morello`,
-    email: `dennismorello@gmail.com`,
-    description: `A dev blog by Dennis Morello.`,
-    siteUrl: `https://morello.dev`,
-    siteDomain: `morello.dev`,
-    language: `en`,
-    disqusShortname: `morello-dev`,
+    title: `cr.lgl's blog`,
+    author: `cr.lgl`,
+    email: `cherryred5959@gmail.com`,
+    description: `my dev log`,
+    siteUrl: `https://ceobe.dev`,
+    siteDomain: `ceobe.dev`,
+    language: `ko`,
+    disqusShortname: `ceobe`,
     social: {
-      instagram: `dennismrl`,
-      linkedin: `dennismorello`,
-      twitter: `dennismorello`,
-      github: `dennismorello`
+      instagram: `cr.lgl`,
+      github: `cr-lgl`
     },
     keywords: [
-      `dennis`,
-      `morello`,
-      `blog`,
-      `gatsby`,
-      `javascript`,
-      `js`,
-      `react`,
-      `reactjs`,
-      `html`,
-      `html5`,
-      `css`,
-      `css3`
+      `laravel`,
+      `doctrine`,
+      `php`,
+      `docker`
     ]
   },
   pathPrefix: `/`,
@@ -169,7 +159,10 @@ module.exports = {
     {
       resolve: `gatsby-plugin-google-fonts`,
       options: {
-        fonts: [`Quicksand:300,400,500,700`],
+        fonts: [
+          `Quicksand:300,400,500,700`,
+          `Noto Sans KR:300,400,500,700`
+        ],
         display: `swap`
       }
     },
