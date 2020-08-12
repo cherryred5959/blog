@@ -151,7 +151,7 @@ module.exports = {
               }
             `,
             output: '/rss.xml',
-            title: 'Dennis Morello'
+            title: `cr.lgl's blog`
           }
         ]
       }
@@ -170,8 +170,8 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `Dev Blog by Dennis Morello`,
-        short_name: `Dev Blog`,
+        name: `cr.lgl's blog`,
+        short_name: `my dev log`,
         start_url: `/`,
         background_color: `#ffffff`,
         theme_color: `#363636`,
