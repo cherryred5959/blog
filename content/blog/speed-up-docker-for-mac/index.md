@@ -39,7 +39,7 @@ draft: false
 해당 옵션과 관련해서 아직 [몇몇 문제들](https://github.com/docker/for-mac/issues/1592)이 있지만, 개발 단계에선 불편함을 느낄 정도는 아닌 거 같습니다.
 이제 써드파티를 새로 학습해야 하는 부담마저 없어졌기 때문에, 맥에서 도커 기반으로 개발환경을 구성하신다면 해당 기능을 꼭 이용해 보세요!
 
-### 참고 링크
+## 참고 링크
 - https://docs.docker.com/storage/bind-mounts/#configure-mount-consistency-for-macos
 - https://qpzm.github.io/2020/03/23/docker-sync.html
 - https://blog.rocketinsights.com/speeding-up-docker-development-on-the-mac
