@@ -44,3 +44,12 @@ draft: false
 - https://qpzm.github.io/2020/03/23/docker-sync.html
 - https://blog.rocketinsights.com/speeding-up-docker-development-on-the-mac
 - https://docs.docker.com/docker-for-mac/mutagen
+
+<hr/>
+
+> 2020-09-09 변경사항
+
+글을 작성한지 얼마되지 않아, 새로운 프로젝트를 동기화 하려고 메뉴를 열자 뮤타젠 관련 기능이 보이지 않더군요.
+원인을 찾아봤는데, [다음과 같은 이유](https://github.com/docker/for-mac/issues/1592#issuecomment-678397258)로 기능을 제거했다고 합니다.
+대신에 `gRPC-FUSE` 옵션을 활성화해서 사용하라고 하더군요. 하지만, 해당 옵션을 활성화해도 뮤타젠만큼의 성능 향상이 이뤄지지 않는다고 합니다.
+한동안, 해당 이슈를 지켜보면서 앞으로 어떻게 될 지 봐야 할 거 같네요. 저는 뮤타젠 동기화를 포기할 수 없어서 한동안 2.3.4 버전으로 사용할 거 같습니다.
