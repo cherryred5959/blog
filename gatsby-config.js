@@ -162,7 +162,8 @@ module.exports = {
               }
             `,
             output: '/rss.xml',
-            title: `cr.lgl's blog`
+            title: `cr.lgl's blog`,
+            link: `https://ceobe.dev`,
           }
         ]
       }
