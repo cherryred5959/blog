@@ -163,7 +163,7 @@ module.exports = {
             `,
             output: '/rss.xml',
             title: `cr.lgl's blog`,
-            link: `https://ceobe.dev`,
+            site_url: `https://ceobe.dev`,
           }
         ]
       }
