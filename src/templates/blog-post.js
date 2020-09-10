@@ -12,6 +12,8 @@ import ReadingProgress from '../components/reading-progress';
 // Theme
 import { ThemeContext, getOppositeTheme } from '../contexts/theme';
 
+import profile from '../../content/assets/profile-pic.jpg';
+
 const BlogPostTemplate = props => {
   const { theme } = useContext(ThemeContext);
 
@@ -44,11 +46,11 @@ const BlogPostTemplate = props => {
     },
     {
       name: 'og:image',
-      content: cover && `${siteUrl}${cover.childImageSharp.fluid.originalImg}`
+      content: profile
     },
     {
       name: 'twitter:image',
-      content: cover && `${siteUrl}${cover.childImageSharp.fluid.originalImg}`
+      content: profile
     },
     ...siteKeywords.map(k => ({
       name: 'article:tag',
