@@ -12,12 +12,7 @@ module.exports = {
       instagram: `cr.lgl`,
       github: `cr-lgl`
     },
-    keywords: [
-      `laravel`,
-      `doctrine`,
-      `php`,
-      `docker`
-    ]
+    keywords: []
   },
   pathPrefix: `/`,
   plugins: [
