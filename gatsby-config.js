@@ -12,7 +12,9 @@ module.exports = {
       instagram: `cr.lgl`,
       github: `cr-lgl`
     },
-    keywords: []
+    keywords: [
+        'dev',
+    ]
   },
   pathPrefix: `/`,
   plugins: [
