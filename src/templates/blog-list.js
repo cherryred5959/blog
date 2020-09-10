@@ -30,6 +30,8 @@ import Animated from '../components/animated';
 // Theme
 import { ThemeContext, getOppositeTheme } from '../contexts/theme';
 
+import profile from '../../content/assets/profile-pic.jpg';
+
 const BlogListTemplate = props => {
     const { theme } = useContext(ThemeContext);
 
@@ -41,7 +43,20 @@ const BlogListTemplate = props => {
 
     return (
         <Layout location={location}>
-            <SEO title={siteTitle} keywords={keywords || []} />
+            <SEO
+              title={siteTitle}
+              keywords={keywords || []}
+              meta={[
+                  {
+                      name: 'og:image',
+                      content: profile
+                  },
+                  {
+                      name: 'twitter:image',
+                      content: profile
+                  },
+              ]}
+            />
             {isFirst ? <Hero isColor={theme} className="is-fullheight-with-navbar">
                 <HeroBody>
                     <Container>
