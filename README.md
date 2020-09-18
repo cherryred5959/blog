@@ -1,5 +1,4 @@
 # My blog
-Forked by https://gitlab.com/dennismorello/dev-blog
 
 ## Run
 ```bash
