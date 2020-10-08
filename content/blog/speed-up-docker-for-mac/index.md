@@ -34,7 +34,7 @@ draft: false
 이후에도 미련을 버리지 못하고, Docker for mac 볼륨 마운트와 관련된 문제가 언제 개선될지 프로젝트를 꾸준히 모니터링하고 있던 중,
 `Edge` 버전에 뮤타젠이 내장된 걸 알게 되었습니다. 사용 방법은 아래 사진처럼 단순하게 디렉터리를 지정해 활성화하기만 하면 됩니다.
 
-![docker](/images/speed-up-docker-for-mac/mac-mutagen-ready.png)
+![docker](./mac-mutagen-ready.png)
 
 해당 옵션과 관련해서 아직 [몇몇 문제들](https://github.com/docker/for-mac/issues/1592)이 있지만, 개발 단계에선 불편함을 느낄 정도는 아닌 거 같습니다.
 이제 써드파티를 새로 학습해야 하는 부담마저 없어졌기 때문에, 맥에서 도커 기반으로 개발환경을 구성하신다면 해당 기능을 꼭 이용해 보세요!
