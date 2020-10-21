@@ -47,7 +47,7 @@ const About = props => {
                 <section>
                   <Subtitle>EXPERIENCE</Subtitle>
                   <div>
-                    <Subtitle isSize={ 6 } tag='h5' isMarginless>(주)에어텔닷컴 [2018.04 ~ 2020.06]</Subtitle>
+                    <Subtitle isSize={ 6 } tag='h5' isMarginless>(주)에어텔닷컴 [2017.04 ~ 2020.06] - 3년 2개월</Subtitle>
                     <Content>
                       <p>
                         <small>- Codeigniter 기반 B2B 및 관리자 서비스 유지보수 및 신규 개발 참여.</small>
