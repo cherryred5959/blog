@@ -58,6 +58,14 @@ const About = props => {
                       </p>
                     </Content>
                   </div>
+                  <div>
+                    <Subtitle isSize={ 6 } tag='h5' isMarginless>(주)메쉬코리아 / 부릉 [2020.11 ~ ]</Subtitle>
+                    <Content>
+                      <p>
+                        <small>- Prime 팀 서비스 개발.</small>
+                      </p>
+                    </Content>
+                  </div>
                 </section>
                 <hr/>
                 <section>
