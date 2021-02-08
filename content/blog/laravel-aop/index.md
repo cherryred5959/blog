@@ -48,6 +48,12 @@ __공통적인 기능에 대한 코드__가 섞여 코드 가독성이 떨어지
 
 지금부터, 어떻게 AOP를 적용해 위에 문제들을 해결하는지 알아보도록 하겠습니다.
 
+## 이미 라라벨에서 AOP가 적용된 곳을 찾아볼 수 있다?
+
+## 라라벨 파이프라인을 활용한 구현
+
+## 또 다른 선택지, Go! AOP
+
 ## 참고 링크
 - http://go.aopphp.com/docs/introduction/
 - https://www.infoworld.com/article/3040557/my-two-cents-on-aspect-oriented-programming.html#:~:text=AOP%20(aspect%2Doriented%20programming),to%20be%20adaptable%20to%20changes.
