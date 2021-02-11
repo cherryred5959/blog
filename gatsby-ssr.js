@@ -7,7 +7,7 @@ import { useLocalStorage } from './src/hooks/local-storage';
 import { ThemeContext } from './src/contexts/theme';
 
 const App = ({ children }) => {
-  const [theme, setTheme] = useLocalStorage('theme', 'dark');
+  const [theme, setTheme] = useLocalStorage('theme', 'light');
 
   return (
     <ThemeContext.Provider
